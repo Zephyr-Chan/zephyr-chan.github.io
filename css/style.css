@@ -1,0 +1,217 @@
+/* ============================================
+   Academic Homepage v3 — Main Styles
+   "Academic Study" Style
+   ============================================ */
+
+@import url('theme.css');
+@import url('typography.css');
+@import url('layout.css');
+@import url('components.css');
+@import url('animations.css');
+
+/* --- Hero Section --- */
+.hero {
+  text-align: center;
+  padding: 6.5rem 0 2.5rem;
+}
+
+.hero-avatar-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.hero-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid var(--bg-card);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.hero-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+.hero-avatar-fallback {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-teal));
+  color: var(--text-inverse);
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: var(--shadow-lg);
+  letter-spacing: -0.02em;
+}
+
+.hero-name {
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.03em;
+}
+
+/* --- Tagline with typing effect --- */
+.hero-tagline {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  margin-bottom: 1.8rem;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.hero-tagline .tagline-item {
+  display: inline;
+}
+
+.hero-tagline .tagline-sep {
+  color: var(--border-color);
+  margin: 0 0.5em;
+}
+
+.hero-tagline .tagline-accent {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.hero-social { margin-top: 0.5rem; }
+
+.hero-quote {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-small);
+  color: var(--text-tertiary);
+  text-align: center;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.quote-mark {
+  font-size: 1.5rem;
+  color: var(--accent);
+  opacity: 0.5;
+  vertical-align: sub;
+}
+
+.quote-author {
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  font-style: normal;
+  color: var(--text-tertiary);
+  opacity: 0.7;
+}
+
+/* --- About Section --- */
+.about-text {
+  font-size: var(--fs-body);
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+
+.about-text a { font-weight: 500; }
+
+.about-text-cn {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.9;
+  color: var(--text-secondary);
+}
+
+.research-interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+/* --- Publication Section --- */
+.pub-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.15rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.pub-title a { color: var(--text-primary); }
+.pub-title a:hover { color: var(--accent); }
+
+.pub-authors {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  margin-bottom: 0.15rem;
+  line-height: 1.4;
+}
+
+.pub-venue {
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  color: var(--text-tertiary);
+}
+
+.pub-venue .venue-tag {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-right: 0.4rem;
+  font-weight: 600;
+  font-size: var(--fs-tag);
+}
+
+.pub-year-header {
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  color: var(--text-tertiary);
+  padding: 0.8rem 0 0.4rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* --- Contact Section --- */
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+
+.contact-item i {
+  color: var(--text-tertiary);
+  width: 1em;
+  text-align: center;
+}
+
+/* --- Utility --- */
+.text-center { text-align: center; }
+.text-muted { color: var(--text-tertiary); }
+.mt-sm { margin-top: 0.5rem; }
+.mt-md { margin-top: 1rem; }
+.mt-lg { margin-top: 1.5rem; }
+.mb-sm { margin-bottom: 0.5rem; }
+.mb-md { margin-bottom: 1rem; }
+.hidden { display: none !important; }

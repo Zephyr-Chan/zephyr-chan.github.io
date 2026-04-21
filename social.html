@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social — Zefeng Chen</title>
+  <meta name="description" content="Social profiles and web presence of Zefeng Chen.">
+  <meta name="author" content="Zefeng Chen">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Social — Zefeng Chen">
+  <meta property="og:description" content="Social profiles and web presence of Zefeng Chen.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* === Social Page Specific Styles === */
+
+    /* Page Header */
+    .page-header {
+      text-align: center;
+      padding: 7rem 0 2rem;
+    }
+
+    .page-header h1 {
+      font-size: var(--fs-hero-name);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      font-size: var(--fs-small);
+      color: var(--text-tertiary);
+      font-weight: 400;
+    }
+
+    /* Social Cards Grid */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .social-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--card-radius);
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .social-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-light);
+    }
+
+    .social-card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #fff;
+      transition: transform var(--transition-fast);
+    }
+
+    .social-card:hover .social-card-icon {
+      transform: scale(1.1);
+    }
+
+    .social-card-icon.github { background: #24292e; }
+    .social-card-icon.email { background: var(--accent); }
+    .social-card-icon.linkedin { background: #0a66c2; }
+    .social-card-icon.zhihu { background: #0066ff; }
+    .social-card-icon.bilibili { background: #fb7299; }
+    .social-card-icon.wechat { background: #07c160; }
+    .social-card-icon.csdn { background: #fc5531; }
+    .social-card-icon.scholar { background: #4285f4; }
+
+    .social-card-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .social-card-desc {
+      font-size: var(--fs-small);
+      color: var(--text-tertiary);
+      line-height: 1.5;
+    }
+
+    .social-card-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .social-card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-mono);
+      font-size: var(--fs-tag);
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-tag);
+      border: 1px solid var(--border-light);
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .social-card-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-light);
+      text-decoration: none;
+    }
+
+    /* Web Presence Section */
+    .web-presence {
+      margin-bottom: 2rem;
+    }
+
+    .web-presence-title {
+      font-size: var(--fs-section);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .web-presence-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 1.2em;
+      background: linear-gradient(180deg, var(--accent-teal), var(--accent));
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .web-presence-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .web-presence-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.8rem 1rem;
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border-light);
+      background: var(--bg-secondary);
+      transition: all var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .web-presence-item:hover {
+      border-color: var(--accent-light);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(4px);
+      text-decoration: none;
+    }
+
+    .web-presence-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .web-presence-icon.scholar { background: #4285f4; }
+    .web-presence-icon.orcid { background: #a6ce39; }
+    .web-presence-icon.researchgate { background: #00ccbb; }
+    .web-presence-icon.semantic { background: #1857b6; }
+
+    .web-presence-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .web-presence-name {
+      font-size: var(--fs-small);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .web-presence-url {
+      font-family: var(--font-mono);
+      font-size: var(--fs-meta);
+      color: var(--text-tertiary);
+    }
+
+    .web-presence-arrow {
+      color: var(--text-tertiary);
+      font-size: 0.8rem;
+      transition: color var(--transition-fast);
+    }
+
+    .web-presence-item:hover .web-presence-arrow {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header {
+        padding: 6rem 0 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== SCROLL PROGRESS BAR ========== -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">Zefeng Chen</a>
+      <div class="navbar-links" id="navbar-links">
+        <a href="index.html#about" class="nav-link" data-i18n="nav_about">About</a>
+        <a href="index.html#education" class="nav-link" data-i18n="nav_education">Education</a>
+        <a href="index.html#research" class="nav-link" data-i18n="nav_research">Research</a>
+        <a href="index.html#news" class="nav-link" data-i18n="nav_news">News</a>
+        <a href="index.html#publications" class="nav-link" data-i18n="nav_publications">Publications</a>
+        <a href="index.html#projects" class="nav-link" data-i18n="nav_projects">Projects</a>
+        <a href="index.html#honors" class="nav-link" data-i18n="nav_honors">Honors</a>
+        <a href="index.html#skills" class="nav-link" data-i18n="nav_skills">Skills</a>
+        <a href="index.html#gallery" class="nav-link" data-i18n="nav_gallery">Gallery</a>
+        <a href="index.html#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
+        <a href="social.html" class="nav-link nav-link-social active" data-i18n="nav_social">Social</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="lang-toggle" id="lang-toggle" onclick="toggleLanguage()">
+          <i class="fas fa-globe"></i> <span id="lang-label">中文</span>
+        </button>
+        <button class="navbar-menu-btn" id="navbar-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== CURSOR GLOW ========== -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- ========== COPY FEEDBACK ========== -->
+  <div class="copy-feedback" id="copy-feedback">Copied!</div>
+
+  <!-- ========== THEME TOGGLE ========== -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="container">
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <h1 data-i18n="social_title">Connect With Me</h1>
+      <p class="page-subtitle" data-i18n="social_subtitle">Find me across the web</p>
+    </section>
+
+    <!-- Social Cards Grid -->
+    <section class="social-grid">
+
+      <!-- GitHub -->
+      <div class="social-card">
+        <div class="social-card-icon github">
+          <i class="fab fa-github"></i>
+        </div>
+        <div class="social-card-name">GitHub</div>
+        <div class="social-card-desc" data-i18n="social_github_desc">Code repositories and open source projects</div>
+        <div class="social-card-actions">
+          <a href="https://github.com/Zephyr-Chan" target="_blank" rel="noopener" class="social-card-btn">
+            <i class="fas fa-external-link-alt"></i> <span data-i18n="social_visit">Visit</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="social-card">
+        <div class="social-card-icon email">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="social-card-name">Email</div>
+        <div class="social-card-desc">820043928@qq.com</div>
+        <div class="social-card-actions">
+          <a href="mailto:820043928@qq.com" class="social-card-btn">
+            <i class="fas fa-paper-plane"></i> <span data-i18n="social_send">Send</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="social-card">
+        <div class="social-card-icon linkedin">
+          <i class="fab fa-linkedin"></i>
+        </div>
+        <div class="social-card-name">LinkedIn</div>
+        <div class="social-card-desc" data-i18n="social_linkedin_desc">Professional profile and network</div>
+        <div class="social-card-actions">
+          <a href="https://www.linkedin.com/in/zefengchen" target="_blank" rel="noopener" class="social-card-btn">
+            <i class="fas fa-external-link-alt"></i> <span data-i18n="social_visit">Visit</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Zhihu -->
+      <div class="social-card">
+        <div class="social-card-icon zhihu">
+          <i class="fas fa-question-circle"></i>
+        </div>
+        <div class="social-card-name" data-i18n="social_zhihu_name">Zhihu</div>
+        <div class="social-card-desc" data-i18n="social_zhihu_desc">Knowledge sharing and Q&A</div>
+        <div class="social-card-actions">
+          <a href="#" target="_blank" rel="noopener" class="social-card-btn">
+            <i class="fas fa-external-link-alt"></i> <span data-i18n="social_visit">Visit</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bilibili -->
+      <div class="social-card">
+        <div class="social-card-icon bilibili">
+          <i class="fas fa-play-circle"></i>
+        </div>
+        <div class="social-card-name" data-i18n="social_bilibili_name">Bilibili</div>
+        <div class="social-card-desc" data-i18n="social_bilibili_desc">Video content and tutorials</div>
+        <div class="social-card-actions">
+          <a href="#" target="_blank" rel="noopener" class="social-card-btn">
+            <i class="fas fa-external-link-alt"></i> <span data-i18n="social_visit">Visit</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- WeChat -->
+      <div class="social-card">
+        <div class="social-card-icon wechat">
+          <i class="fab fa-weixin"></i>
+        </div>
+        <div class="social-card-name" data-i18n="social_wechat_name">WeChat</div>
+        <div class="social-card-desc" data-i18n="social_wechat_desc">Scan QR code to add (WeChat: 13318407206)</div>
+        <div class="social-card-actions">
+          <a href="assets/images/wechat-qr.jpg" target="_blank" class="social-card-btn">
+            <i class="fas fa-qrcode"></i> <span data-i18n="social_qr">QR Code</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CSDN -->
+      <div class="social-card">
+        <div class="social-card-icon csdn">
+          <i class="fas fa-blog"></i>
+        </div>
+        <div class="social-card-name">CSDN</div>
+        <div class="social-card-desc" data-i18n="social_csdn_desc">Technical blog posts</div>
+        <div class="social-card-actions">
+          <a href="#" target="_blank" rel="noopener" class="social-card-btn">
+            <i class="fas fa-external-link-alt"></i> <span data-i18n="social_visit">Visit</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Google Scholar -->
+      <div class="social-card">
+        <div class="social-card-icon scholar">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="social-card-name">Google Scholar</div>
+        <div class="social-card-desc" data-i18n="social_scholar_desc">Academic publications and citations</div>
+        <div class="social-card-actions">
+          <a href="#" target="_blank" rel="noopener" class="social-card-btn">
+            <i class="fas fa-external-link-alt"></i> <span data-i18n="social_visit">Visit</span>
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Web Presence -->
+    <section class="web-presence">
+      <h2 class="web-presence-title" data-i18n="web_presence_title">Find Me Online</h2>
+      <div class="web-presence-list">
+
+        <a href="#" target="_blank" rel="noopener" class="web-presence-item">
+          <div class="web-presence-icon scholar">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="web-presence-info">
+            <div class="web-presence-name">Google Scholar</div>
+            <div class="web-presence-url">scholar.google.com</div>
+          </div>
+          <div class="web-presence-arrow"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="#" target="_blank" rel="noopener" class="web-presence-item">
+          <div class="web-presence-icon orcid">
+            <i class="fab fa-orcid"></i>
+          </div>
+          <div class="web-presence-info">
+            <div class="web-presence-name">ORCID</div>
+            <div class="web-presence-url">orcid.org</div>
+          </div>
+          <div class="web-presence-arrow"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="#" target="_blank" rel="noopener" class="web-presence-item">
+          <div class="web-presence-icon researchgate">
+            <i class="fab fa-researchgate"></i>
+          </div>
+          <div class="web-presence-info">
+            <div class="web-presence-name">ResearchGate</div>
+            <div class="web-presence-url">researchgate.net</div>
+          </div>
+          <div class="web-presence-arrow"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="#" target="_blank" rel="noopener" class="web-presence-item">
+          <div class="web-presence-icon semantic">
+            <i class="fas fa-university"></i>
+          </div>
+          <div class="web-presence-info">
+            <div class="web-presence-name">Semantic Scholar</div>
+            <div class="web-presence-url">semanticscholar.org</div>
+          </div>
+          <div class="web-presence-arrow"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Zefeng Chen. Built with &hearts; and &coffee;</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <span style="color:var(--border-color);">|</span>
+      <a href="https://github.com/Zephyr-Chan/zephyr-chan.github.io" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Source
+      </a>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+
+</body>
+</html>
