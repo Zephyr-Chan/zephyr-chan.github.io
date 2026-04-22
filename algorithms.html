@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithms — Zefeng Chen</title>
+  <meta name="description" content="Algorithm learning and competitive programming page of Zefeng Chen.">
+  <meta name="author" content="Zefeng Chen">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Algorithms — Zefeng Chen">
+  <meta property="og:description" content="Algorithm learning and competitive programming page of Zefeng Chen.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* === Algorithms Page Specific Styles === */
+
+    /* Page Header */
+    .page-header {
+      text-align: center;
+      padding: 7rem 0 2rem;
+    }
+
+    .page-header h1 {
+      font-size: var(--fs-hero-name);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      font-size: var(--fs-small);
+      color: var(--text-tertiary);
+      font-weight: 400;
+    }
+
+    /* OJ Platform Cards */
+    .oj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .oj-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--card-radius);
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .oj-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-light);
+      text-decoration: none;
+    }
+
+    .oj-card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #fff;
+      transition: transform var(--transition-fast);
+    }
+
+    .oj-card:hover .oj-card-icon {
+      transform: scale(1.1);
+    }
+
+    .oj-card-icon.codeforces { background: #1f1f1f; }
+    .oj-card-icon.atcoder { background: #1a1a2e; }
+    .oj-card-icon.luogu { background: #3498db; }
+    .oj-card-icon.leetcode { background: #f89f1b; }
+    .oj-card-icon.nowcoder { background: #c0392b; }
+
+    .oj-card-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .oj-card-desc {
+      font-size: var(--fs-meta);
+      color: var(--text-tertiary);
+    }
+
+    /* Coming Soon Notice */
+    .coming-soon-notice {
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg-secondary);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--card-radius);
+      margin-bottom: 2rem;
+    }
+
+    .coming-soon-notice i {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .coming-soon-notice p {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+    }
+
+    /* Competition History */
+    .competition-history {
+      margin-bottom: 2rem;
+    }
+
+    .competition-placeholder {
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--card-radius);
+      color: var(--text-tertiary);
+      font-size: var(--fs-small);
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .oj-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .page-header {
+        padding: 6rem 0 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== SCROLL PROGRESS BAR ========== -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">Zefeng Chen</a>
+      <div class="navbar-links" id="navbar-links">
+        <a href="index.html#about" class="nav-link" data-i18n="nav_about">About</a>
+        <a href="index.html#education" class="nav-link" data-i18n="nav_education">Education</a>
+        <a href="index.html#research" class="nav-link" data-i18n="nav_research">Research</a>
+        <a href="index.html#news" class="nav-link" data-i18n="nav_news">News</a>
+        <a href="index.html#publications" class="nav-link" data-i18n="nav_publications">Publications</a>
+        <a href="index.html#projects" class="nav-link" data-i18n="nav_projects">Projects</a>
+        <a href="index.html#honors" class="nav-link" data-i18n="nav_honors">Honors</a>
+        <a href="index.html#skills" class="nav-link" data-i18n="nav_skills">Skills</a>
+        <a href="index.html#gallery" class="nav-link" data-i18n="nav_gallery">Gallery</a>
+        <a href="index.html#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
+        <a href="cv.html" class="nav-link" data-i18n="nav_cv">CV</a>
+        <a href="algorithms.html" class="nav-link active" data-i18n="nav_algorithms">Algorithms</a>
+        <a href="social.html" class="nav-link" data-i18n="nav_social">Social</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="lang-toggle" id="lang-toggle" onclick="toggleLanguage()">
+          <i class="fas fa-globe"></i> <span id="lang-label">中文</span>
+        </button>
+        <button class="navbar-menu-btn" id="navbar-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== CURSOR GLOW ========== -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- ========== COPY FEEDBACK ========== -->
+  <div class="copy-feedback" id="copy-feedback">Copied!</div>
+
+  <!-- ========== THEME TOGGLE ========== -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="container">
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <h1 data-i18n="algorithms_title">Algorithm Arena</h1>
+      <p class="page-subtitle" data-i18n="algorithms_subtitle">Sharpening problem-solving skills through competitive programming</p>
+    </section>
+
+    <!-- OJ Platform Links -->
+    <section class="section reveal" id="oj-platforms">
+      <h2 class="section-title">Online Judges</h2>
+
+      <div class="oj-grid">
+        <a href="https://codeforces.com" target="_blank" rel="noopener" class="oj-card">
+          <div class="oj-card-icon codeforces">
+            <i class="fas fa-code"></i>
+          </div>
+          <div class="oj-card-name">Codeforces</div>
+          <div class="oj-card-desc">codeforces.com</div>
+        </a>
+
+        <a href="https://atcoder.jp" target="_blank" rel="noopener" class="oj-card">
+          <div class="oj-card-icon atcoder">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="oj-card-name">AtCoder</div>
+          <div class="oj-card-desc">atcoder.jp</div>
+        </a>
+
+        <a href="https://www.luogu.com.cn" target="_blank" rel="noopener" class="oj-card">
+          <div class="oj-card-icon luogu">
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="oj-card-name">Luogu</div>
+          <div class="oj-card-desc">luogu.com.cn</div>
+        </a>
+
+        <a href="https://leetcode.cn" target="_blank" rel="noopener" class="oj-card">
+          <div class="oj-card-icon leetcode">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="oj-card-name">LeetCode</div>
+          <div class="oj-card-desc">leetcode.cn</div>
+        </a>
+
+        <a href="https://www.nowcoder.com" target="_blank" rel="noopener" class="oj-card">
+          <div class="oj-card-icon nowcoder">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="oj-card-name">Nowcoder</div>
+          <div class="oj-card-desc">nowcoder.com</div>
+        </a>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Coming Soon -->
+    <section class="section reveal" id="algorithm-learning">
+      <h2 class="section-title" data-i18n="nav_algorithms">Algorithms</h2>
+
+      <div class="coming-soon-notice">
+        <i class="fas fa-hammer"></i>
+        <p data-i18n="algorithms_coming_soon">Detailed algorithm learning content is coming soon. Stay tuned!</p>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Competition History -->
+    <section class="section reveal" id="competition-history">
+      <h2 class="section-title" data-i18n="algorithms_competition_title">Competition History</h2>
+
+      <div class="competition-history">
+        <div class="competition-placeholder" data-i18n="algorithms_competition_placeholder">
+          Competition records will be displayed here...
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Zefeng Chen. Built with &hearts; and &coffee;</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <span style="color:var(--border-color);">|</span>
+      <a href="https://github.com/Zephyr-Chan/zephyr-chan.github.io" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Source
+      </a>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+
+</body>
+</html>

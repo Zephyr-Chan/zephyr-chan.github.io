@@ -65,7 +65,9 @@
         <a href="#skills" class="nav-link" data-i18n="nav_skills">Skills</a>
         <a href="#gallery" class="nav-link" data-i18n="nav_gallery">Gallery</a>
         <a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
-        <a href="social.html" class="nav-link nav-link-social" data-i18n="nav_social">Social</a>
+        <a href="cv.html" class="nav-link" data-i18n="nav_cv">CV</a>
+        <a href="algorithms.html" class="nav-link" data-i18n="nav_algorithms">Algorithms</a>
+        <a href="social.html" class="nav-link" data-i18n="nav_social">Social</a>
       </div>
       <div class="navbar-actions">
         <button class="lang-toggle" id="lang-toggle" onclick="toggleLanguage()">
@@ -125,7 +127,7 @@
         <span class="tagline-sep">|</span>
         <span class="tagline-item">Software Engineering</span>
         <span class="tagline-sep">|</span>
-        <span class="tagline-item tagline-accent">Research: AI Agent 、 LLM 、BCI 、Diffusion Model</span>
+        <span class="tagline-item tagline-accent">Research: AI Agent, LLM, BCI & Diffusion Model</span>
       </p>
 
       <div class="social-links hero-social hero-animate">
@@ -138,7 +140,7 @@
         <a href="https://www.linkedin.com/in/zefengchen" class="social-btn" target="_blank" rel="noopener">
           <i class="fab fa-linkedin"></i> LinkedIn
         </a>
-        <a href="#" class="social-btn">
+        <a href="cv.html" class="social-btn">
           <i class="fas fa-file-pdf"></i> CV
         </a>
         <a href="social.html" class="social-btn">
@@ -175,20 +177,25 @@
             <p>
               I am an undergraduate student at <a href="https://www.wyu.edu.cn">Wuyi University</a>,
               School of Electronic and Information Engineering, majoring in Software Engineering.
-              My research interests focus on <strong>AI Agent</strong>, <strong>Large Language Models (LLM)</strong>,
+              My research interests lie at the intersection of <strong>AI Agent</strong>, <strong>Large Language Models (LLM)</strong>,
               <strong>Diffusion Models</strong>, and <strong>Brain-Computer Interface (BCI)</strong>.
-              Currently, I am conducting two core research projects: developing a multimodal AI Agent
-              for automated radiotherapy treatment planning, aiming to build an intelligent system with
-              clinical decision-making capabilities to optimize the radiotherapy planning workflow; and
-              researching large model approaches for EEG signals, dedicated to improving decoding accuracy
-              and cross-subject transfer capability of EEG data.
-              I plan to pursue an MPhil degree in Computer Science to further enhance my academic research
-              capabilities and contribute to the forefront of artificial intelligence.
-              I am actively seeking academic collaboration opportunities. If you are interested in any form
-              of academic collaboration or technical exchange, please feel free to reach out via email or
-              instant messaging.
-              Additionally, I will maintain academic and personal growth columns on Zhihu and Xiaohongshu,
-              aiming to provide references for learners and researchers in related fields.
+            </p>
+            <p>
+              Currently, I am leading two core research projects. The first involves developing a multimodal
+              AI Agent for automated radiotherapy treatment planning, with the goal of building an intelligent
+              system capable of clinical decision-making to optimize the radiotherapy workflow. The second
+              focuses on large model approaches for EEG signals, aiming to improve decoding accuracy and
+              enable cross-subject transfer of brain-computer interface systems.
+            </p>
+            <p>
+              I plan to pursue an MPhil degree in Computer Science to deepen my research capabilities and
+              contribute to the forefront of artificial intelligence. I am actively seeking academic
+              collaboration opportunities -- if you are interested in any form of collaboration or technical
+              exchange, please feel free to reach out via email or instant messaging.
+            </p>
+            <p>
+              Additionally, I maintain academic and personal growth columns on Zhihu and Xiaohongshu,
+              where I share insights and references for learners and researchers in related fields.
             </p>
           </div>
 
@@ -628,6 +635,18 @@
     </section>
 
   </main>
+
+  <!-- ===== VISITOR MAP ===== -->
+  <section class="section reveal" id="visitor-map">
+    <h2 class="section-title" data-i18n="nav_visitor_map">Visitor Map</h2>
+    <div class="visitor-map-container">
+      <div id="clustrmaps-widget" style="height: 300px; width: 100%; border-radius: var(--card-radius); overflow: hidden;">
+        <!-- Replace YOUR_UNIQUE_ID with your actual ClustrMaps ID from https://clustrmaps.com -->
+        <script id="clustrmaps" src="//clustrmaps.com/globe.js?d=YOUR_UNIQUE_ID" type="text/javascript"></script>
+      </div>
+      <p class="visitor-map-note" data-i18n="visitor_map_note">Real-time visitor locations tracked by ClustrMaps</p>
+    </div>
+  </section>
 
   <!-- ========== FOOTER ========== -->
   <footer class="site-footer">
