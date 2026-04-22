@@ -424,7 +424,7 @@ CV 页面 (`cv.html`) 用于展示简历和成绩单，支持**在线预览**和
 
 ### 14.1 当前配置
 
-你的 ClustrMaps 站点 ID 是 `1c9te`，已嵌入在 `index.html` 的访客地图板块中。
+你的 ClustrMaps 站点 ID 是 `D-mQxxgE3prigOoSDoGocIljwE15dN810lK2fVHYC7w`，已嵌入在 `index.html` 的访客地图板块中。
 
 查看数据面板：`https://clustrmaps.com/site/1c9te`
 
@@ -433,20 +433,20 @@ CV 页面 (`cv.html`) 用于展示简历和成绩单，支持**在线预览**和
 在 `index.html` 中搜索 `clustrmaps`，找到嵌入代码：
 
 ```html
-<script id="clustrmaps" src="//clustrmaps.com/globe.js?d=1c9te" type="text/javascript"></script>
+<script id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=D-mQxxgE3prigOoSDoGocIljwE15dN810lK2fVHYC7w&cl=ffffff&w=a&t=n&z=1" type="text/javascript"></script>
 ```
 
 ### 14.3 如果访客数据为 0
 
 1. 确认网站已部署到 GitHub Pages（本地预览不计入访客）
-2. 确认嵌入代码中的 ID 正确（`d=1c9te`）
+2. 确认嵌入代码中的 ID 正确（`d=D-mQxxgE3prigOoSDoGocIljwE15dN810lK2fVHYC7w`）
 3. 访问一次你的网站，等几分钟后再查看 ClustrMaps 面板
 4. 如果仍为 0，去 ClustrMaps 设置页面检查追踪状态
 
 ### 14.4 切换地图样式
 
-- **3D 地球仪**（当前）：`globe.js?d=1c9te`
-- **2D 平面地图**：`map_v2.js?d=1c9te&cl=ffffff&w=a&t=n&z=1`
+- **3D 地球仪**：`globe.js?d=D-mQxxgE3prigOoSDoGocIljwE15dN810lK2fVHYC7w`
+- **2D 平面地图**（当前）：`map_v2.js?d=D-mQxxgE3prigOoSDoGocIljwE15dN810lK2fVHYC7w&cl=ffffff&w=a&t=n&z=1`
 
 ### 14.5 修改地图高度
 
