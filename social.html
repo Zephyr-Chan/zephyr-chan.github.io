@@ -248,6 +248,25 @@
         padding: 6rem 0 1.5rem;
       }
     }
+
+    /* === Friend Links === */
+    .friend-links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .friend-link-card { display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid var(--border-light); border-radius: var(--card-radius); background: var(--bg-card); text-decoration: none; transition: all var(--transition-normal); }
+    .friend-link-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--accent-light); }
+    .friend-link-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+    .friend-link-info { flex: 1; min-width: 0; }
+    .friend-link-name { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+    .friend-link-desc { font-size: var(--fs-meta); color: var(--text-tertiary); margin-top: 2px; }
+
+    /* === Contact Form === */
+    .contact-form-wrapper { max-width: 600px; margin: 0 auto; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: var(--fs-small); font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--border-light); border-radius: var(--card-radius); font-family: var(--font-body); font-size: var(--fs-small); color: var(--text-primary); background: var(--bg-secondary); transition: border-color var(--transition-fast); box-sizing: border-box; }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-submit-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.5rem; background: var(--accent); color: #fff; border: none; border-radius: var(--card-radius); font-family: var(--font-body); font-size: var(--fs-small); font-weight: 600; cursor: pointer; transition: all var(--transition-fast); }
+    .form-submit-btn:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
   </style>
 </head>
 <body>
@@ -270,7 +289,9 @@
         <a href="index.html#skills" class="nav-link" data-i18n="nav_skills">Skills</a>
         <a href="index.html#gallery" class="nav-link" data-i18n="nav_gallery">Gallery</a>
         <a href="index.html#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
-        <a href="social.html" class="nav-link nav-link-social active" data-i18n="nav_social">Social</a>
+        <a href="cv.html" class="nav-link" data-i18n="nav_cv">CV</a>
+        <a href="algorithms.html" class="nav-link" data-i18n="nav_algorithms">Algorithms</a>
+        <a href="social.html" class="nav-link active" data-i18n="nav_social">Social</a>
       </div>
       <div class="navbar-actions">
         <button class="lang-toggle" id="lang-toggle" onclick="toggleLanguage()">
@@ -425,6 +446,40 @@
 
     </section>
 
+    <!-- ===== CONTACT FORM ===== -->
+    <section class="section reveal" id="contact-form">
+      <h2 class="section-title" data-i18n="nav_contact_form">Send Me a Message</h2>
+      <div class="contact-form-wrapper">
+        <form id="contact-form" action="https://formsubmit.co/820043928@qq.com" method="POST">
+          <!-- FormSubmit configuration -->
+          <input type="hidden" name="_subject" value="New message from academic homepage">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none">
+
+          <div class="form-group">
+            <label for="contact-name" data-i18n="form_name">Name</label>
+            <input type="text" id="contact-name" name="name" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="contact-email" data-i18n="form_email">Email</label>
+            <input type="email" id="contact-email" name="email" required placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="contact-subject" data-i18n="form_subject">Subject</label>
+            <input type="text" id="contact-subject" name="subject" placeholder="What's this about?">
+          </div>
+          <div class="form-group">
+            <label for="contact-message" data-i18n="form_message">Message</label>
+            <textarea id="contact-message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
+          </div>
+          <button type="submit" class="form-submit-btn">
+            <i class="fas fa-paper-plane"></i> <span data-i18n="form_send_btn">Send Message</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
     <!-- Web Presence -->
     <section class="web-presence">
       <h2 class="web-presence-title" data-i18n="web_presence_title">Find Me Online</h2>
@@ -478,6 +533,28 @@
     </section>
 
   </main>
+
+  <!-- ===== FRIEND LINKS ===== -->
+  <section class="section reveal" id="friend-links" style="max-width: var(--max-width); margin: 0 auto; padding: 0 var(--container-padding);">
+    <h2 class="section-title" data-i18n="nav_friend_links">Friend Links</h2>
+    <div class="friend-links-grid">
+      <a href="https://silencer76.com" target="_blank" rel="noopener" class="friend-link-card">
+        <div class="friend-link-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">76</div>
+        <div class="friend-link-info">
+          <div class="friend-link-name">Silencer76</div>
+          <div class="friend-link-desc" data-i18n="friend_silencer76">代码构建世界，算法改变未来</div>
+        </div>
+      </a>
+      <!-- Add more friend link cards here -->
+      <a href="#" class="friend-link-card friend-link-add" data-i18n="friend_add_link">
+        <div class="friend-link-avatar" style="background: var(--bg-tag); border: 2px dashed var(--border-color);">+</div>
+        <div class="friend-link-info">
+          <div class="friend-link-name" style="color: var(--text-tertiary);">Add Your Link</div>
+          <div class="friend-link-desc" data-i18n="friend_add_desc">Exchange links? Contact me!</div>
+        </div>
+      </a>
+    </div>
+  </section>
 
   <!-- ========== FOOTER ========== -->
   <footer class="site-footer">
