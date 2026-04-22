@@ -71,6 +71,18 @@
       text-decoration: none;
     }
 
+    /* Stagger Animation */
+    .oj-card { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.5s ease forwards; }
+    .oj-card:nth-child(1) { animation-delay: 0.1s; }
+    .oj-card:nth-child(2) { animation-delay: 0.2s; }
+    .oj-card:nth-child(3) { animation-delay: 0.3s; }
+    .oj-card:nth-child(4) { animation-delay: 0.4s; }
+    .oj-card:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .oj-card-icon {
       width: 52px;
       height: 52px;

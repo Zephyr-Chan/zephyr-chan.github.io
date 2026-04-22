@@ -231,9 +231,9 @@ function applyLanguage() {
   // Update highlight box
   if (highlightBox) {
     if (currentLang === 'zh') {
-      highlightBox.innerHTML = '<strong>🎯 未来计划：</strong>保持对计算机科学和人工智能的纯粹好奇心，在MPhil阶段深入探索感兴趣的研究方向。希望能在科研中找到真正热爱的问题，与志同道合的伙伴一起做出有意义的贡献。同时也期待在算法竞赛中继续挑战自我，享受解题的乐趣。';
+      highlightBox.innerHTML = '<strong>🎯 未来计划：</strong>保持对计算机科学和人工智能的纯粹好奇心，深入探索感兴趣的研究方向。希望能在科研中找到真正热爱的问题，与志同道合的伙伴一起做出有意义的贡献。同时也期待在算法竞赛中继续挑战自我，享受解题的乐趣。';
     } else {
-      highlightBox.innerHTML = '<strong>🎯 Future Plan:</strong>Maintain a genuine curiosity for computer science and AI. During my MPhil studies, I hope to dive deep into research directions I am truly passionate about. I look forward to finding problems I genuinely love, and making meaningful contributions alongside like-minded peers. I also look forward to continuing to challenge myself in competitive programming and enjoying the thrill of problem-solving.';
+      highlightBox.innerHTML = '<strong>🎯 Future Plan:</strong>Maintain a genuine curiosity for computer science and AI, and dive deep into research directions I am truly passionate about. I look forward to finding problems I genuinely love, and making meaningful contributions alongside like-minded peers. I also look forward to continuing to challenge myself in competitive programming and enjoying the thrill of problem-solving.';
     }
   }
 
@@ -310,6 +310,12 @@ function applyLanguage() {
     cv_download: { en: 'Download', zh: '下载' },
     cv_hide: { en: 'Hide', zh: '收起' },
     cv_views: { en: 'views', zh: '次浏览' },
+    cv_intro: { en: 'Welcome to my document center. Here you can preview and download my academic resume and official transcript. Feel free to reach out if you need any additional information.', zh: '欢迎来到我的文档中心。在这里你可以预览和下载我的学术简历和官方成绩单。如需更多信息，请随时联系我。' },
+    cv_updated: { en: 'Updated', zh: '更新于' },
+    cv_no_preview: { en: 'Click Preview to view the document', zh: '点击预览查看文档' },
+    cv_tip: { en: 'Tip: Click Preview to view the document online, or click Download to save a copy. The preview uses Google Docs Viewer and may take a moment to load.', zh: '提示：点击预览可在线查看文档，点击下载可保存副本。预览使用 Google Docs Viewer，可能需要片刻加载。' },
+    form_attachment: { en: 'Attachment (optional)', zh: '附件（可选）' },
+    form_attachment_hint: { en: 'Click to upload or drag a file here', zh: '点击上传或拖拽文件到此处' },
   };
 
   document.querySelectorAll('[data-i18n]').forEach(el => {

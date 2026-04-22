@@ -8,7 +8,7 @@
 
 1. [项目概述](#1-项目概述)
 2. [如何预览网站](#2-如何预览网站)
-3. [GitHub Pages 部署指南（含常见问题排查）](#3-github-pages-部署指南)
+3. [GitHub Pages 部署指南](#3-github-pages-部署指南)
 4. [如何修改个人信息](#4-如何修改个人信息)
 5. [如何添加/修改科研经历](#5-如何添加修改科研经历)
 6. [如何添加/修改论文](#6-如何添加修改论文)
@@ -16,24 +16,38 @@
 8. [如何添加/修改新闻](#8-如何添加修改新闻)
 9. [如何添加/修改荣誉奖项](#9-如何添加修改荣誉奖项)
 10. [如何修改技术栈 Skills](#10-如何修改技术栈-skills)
-11. [如何管理 Social 社交页面](#11-如何管理-social-社交页面)
-12. [如何替换头像和图片](#12-如何替换头像和图片)
-13. [如何修改配色](#13-如何修改配色)
-14. [导航栏与中英文切换系统](#14-导航栏与中英文切换系统)
-15. [常见问题 FAQ](#15-常见问题-faq)
+11. [如何管理 CV 简历页面](#11-如何管理-cv-简历页面)
+12. [如何管理 Algorithms 算法页面](#12-如何管理-algorithms-算法页面)
+13. [如何管理 Social 社交页面](#13-如何管理-social-社交页面)
+14. [如何管理访客地图 ClustrMaps](#14-如何管理访客地图-clustrmaps)
+15. [如何替换头像和图片](#15-如何替换头像和图片)
+16. [如何修改配色](#16-如何修改配色)
+17. [导航栏与中英文切换系统](#17-导航栏与中英文切换系统)
+18. [常见问题 FAQ](#18-常见问题-faq)
 
 ---
 
 ## 1. 项目概述
 
-这是一个**纯静态学术个人主页**，不需要服务器、不需要数据库。网站由主页 (`index.html`) 和社交页 (`social.html`) 两个页面组成，共享同一套样式和脚本。
+这是一个**纯静态学术个人主页**，不需要服务器、不需要数据库。网站由 4 个页面组成，共享同一套样式和脚本。
+
+### 页面列表
+
+| 页面 | 文件 | 说明 |
+|------|------|------|
+| 主页 | `index.html` | 个人信息、科研经历、论文、项目、荣誉、技能、相册、联系方式、访客地图 |
+| CV 简历 | `cv.html` | 简历和成绩单的在线预览与下载 |
+| 算法竞技场 | `algorithms.html` | OJ 平台链接、竞赛经历（待完善） |
+| 社交页面 | `social.html` | 社交平台链接、学术主页、友链、联系表单 |
 
 ### 文件结构
 
 ```
 academic-homepage/
-├── index.html          # 主页面（个人信息、论文、项目等）
-├── social.html         # 社交页面（各平台链接、学术主页）
+├── index.html          # 主页面
+├── cv.html             # CV 简历页面
+├── algorithms.html     # 算法学习页面
+├── social.html         # 社交页面
 ├── css/                # 样式文件夹（一般不需要修改）
 │   ├── style.css       # 主样式入口（导入其他CSS）
 │   ├── theme.css       # 配色主题（想改颜色改这里）
@@ -42,35 +56,39 @@ academic-homepage/
 │   ├── typography.css  # 字体与排版
 │   └── animations.css  # 动画效果
 ├── js/                 # 脚本文件夹
-│   ├── main.js         # 主脚本（主题切换、语言切换、导航等）
+│   ├── main.js         # 主脚本（主题切换、语言切换、导航、翻译等）
 │   ├── gallery.js      # 图片画廊功能
 │   ├── publications.js # 论文筛选功能
 │   └── animations.js   # 滚动入场动画
-└── assets/             # 图片资源文件夹
-    └── images/
-        ├── profile.jpg           # 你的头像
-        ├── publications/         # 论文缩略图
-        ├── projects/             # 项目截图
-        ├── gallery/              # 画廊照片
-        └── logos/                # 学校/机构 logo
+└── assets/             # 资源文件夹
+    ├── images/         # 图片资源
+    │   ├── profile.jpg           # 头像
+    │   ├── publications/         # 论文缩略图
+    │   ├── projects/             # 项目截图
+    │   ├── gallery/              # 画廊照片
+    │   ├── logos/                # 学校/机构 logo
+    │   └── wechat-qr.jpg         # 微信二维码
+    └── files/           # 文档资源
+        ├── resume.pdf            # 简历 PDF
+        └── transcript.pdf        # 成绩单 PDF
 ```
 
-### 网站包含的板块
+### 主页包含的板块
 
-| 板块 | 所在页面 | 说明 |
-|------|---------|------|
-| Hero（头像+名字+标语） | index.html | 页面最顶部的个人信息展示 |
-| About（关于我） | index.html | 个人简介，支持中英文 |
-| Education（教育背景） | index.html | 学历信息 |
-| Research（科研经历） | index.html | 科研助理/实习经历 |
-| News（新闻动态） | index.html | 最新动态，支持折叠 |
-| Publications（学术论文） | index.html | 论文列表，支持分类筛选 |
-| Projects（研究项目） | index.html | 项目卡片展示 |
-| Honors（荣誉奖项） | index.html | 获奖列表 |
-| Skills（技术栈） | index.html | 技能分类展示 |
-| Gallery（相册） | index.html | 照片墙 |
-| Contact（联系方式） | index.html | 邮箱、地址 |
-| Social（社交链接） | social.html | 各平台账号、学术主页 |
+| 板块 | 说明 |
+|------|------|
+| Hero（头像+名字+标语） | 页面最顶部的个人信息展示 |
+| About（关于我） | 个人简介，支持中英文 |
+| Education（教育背景） | 学历信息 |
+| Research（科研经历） | 以项目为模块的科研经历 |
+| News（新闻动态） | 最新动态，支持折叠 |
+| Publications（学术论文） | 论文列表，支持分类筛选 |
+| Projects（研究项目） | 项目卡片展示 |
+| Honors（荣誉奖项） | 获奖列表 |
+| Skills（技术栈） | 技能分类展示 |
+| Gallery（相册） | 照片墙 |
+| Contact（联系方式） | 邮箱、地址 |
+| Visitor Map（访客地图） | ClustrMaps 3D 地球仪访客分布 |
 
 ---
 
@@ -108,8 +126,7 @@ GitHub Pages 是**免费的静态网站托管服务**，可以把你的网站发
 1. 进入刚创建的仓库页面
 2. 点击 `Add file` → `Upload files`
 3. 把以下文件和文件夹**全部**拖进去（注意要在根目录，不要嵌套）：
-   - `index.html`
-   - `social.html`
+   - `index.html`、`cv.html`、`algorithms.html`、`social.html`
    - `css/` 文件夹
    - `js/` 文件夹
    - `assets/` 文件夹
@@ -118,16 +135,11 @@ GitHub Pages 是**免费的静态网站托管服务**，可以把你的网站发
 **方法 B：用 Git 命令行（推荐，方便后续更新）**
 
 ```bash
-# 1. 克隆仓库
 git clone https://github.com/你的用户名/你的用户名.github.io.git
 cd 你的用户名.github.io
-
-# 2. 把网站文件复制进来
-# （把 index.html, social.html, css/, js/, assets/ 都复制到这个目录）
-
-# 3. 提交并推送
+# 把网站文件复制进来
 git add .
-git commit -m "Initial commit: academic homepage"
+git commit -m "Update academic homepage"
 git push origin main
 ```
 
@@ -141,12 +153,9 @@ git push origin main
 
 #### 步骤四：等待部署
 
-- 等待 1-3 分钟
-- 访问 `https://你的用户名.github.io` 即可看到你的网站
+等待 1-3 分钟，访问 `https://你的用户名.github.io` 即可看到你的网站。
 
 ### 3.2 ⚠️ 页面空白问题排查
-
-如果部署后页面是空白的，**99% 的原因是仓库名不对**。
 
 | 症状 | 原因 | 解决方法 |
 |------|------|---------|
@@ -155,7 +164,7 @@ git push origin main
 | 404 Not Found | 仓库是 Private | 把仓库改为 Public |
 | 修改后没更新 | 需要等待 | 等 1-3 分钟再刷新 |
 
-**最重要的规则**：仓库名 = `你的GitHub用户名.github.io`，这样 URL 才是 `https://你的用户名.github.io/`，所有路径才能正常工作。
+**最重要的规则**：仓库名 = `你的GitHub用户名.github.io`
 
 ### 3.3 后续更新网站
 
@@ -165,19 +174,15 @@ git push origin main
 
 ## 4. 如何修改个人信息
 
-以下列出所有需要修改的位置，用**搜索关键词**帮你快速定位。
+以下列出所有需要修改的位置，用**搜索关键词**帮你快速定位。**注意：所有页面中出现的个人信息都要同步修改。**
 
 ### 4.1 网页标题和搜索信息
 
-打开 `index.html`，在文件最开头搜索以下关键词并替换：
-
-| 搜索关键词 | 替换为 | 说明 |
+| 搜索关键词 | 替换为 | 涉及文件 |
 |---|---|---|
-| `Zefeng Chen — Academic Homepage` | 你的名字 + Academic Homepage | 浏览器标签页标题 |
-| `Personal academic homepage of Zefeng Chen` | 你的个人简介 | 搜索引擎描述 |
-| `Zefeng Chen, AI Agent, LLM, BCI` | 你的名字 + 关键词 | 搜索引擎关键词 |
-
-**同时修改 `social.html` 中的**：搜索 `Zefeng Chen` 替换为你的名字。
+| `Zefeng Chen — Academic Homepage` | 你的名字 + Academic Homepage | index.html |
+| `CV — Zefeng Chen` | CV — 你的名字 | cv.html |
+| `Social — Zefeng Chen` | Social — 你的名字 | social.html |
 
 ### 4.2 顶部个人信息（Hero 区域）
 
@@ -185,17 +190,13 @@ git push origin main
 
 搜索 `hero-tagline`，找到标签行（学校、专业、研究方向）并替换。
 
-搜索 `hero-avatar-fallback`，找到头像加载失败时显示的字母缩写（如 `ZC`）并替换。
-
-### 4.3 社交链接
+### 4.3 社交链接（所有页面都要改）
 
 | 搜索关键词 | 替换为 |
 |---|---|
+| `https://github.com/Zephyr-Chan` | 你的 GitHub 链接 |
 | `mailto:820043928@qq.com` | 你的邮箱 |
-| `https://github.com/zefengchen` | 你的 GitHub 链接 |
 | `linkedin.com/in/zefengchen` | 你的 LinkedIn 链接 |
-
-**注意**：以上链接在 `index.html` 和 `social.html` 中都有出现，**两个文件都要改**。
 
 ### 4.4 关于我（About 区域）
 
@@ -203,78 +204,45 @@ git push origin main
 
 搜索 `about-cn`，找到中文简介段落，直接替换文字。
 
-搜索 `research-interests`，找到研究兴趣标签，每个 `<span class="tag">...</span>` 就是一个标签，按格式增删即可。
-
-搜索 `highlight-box`，找到高亮框内容（未来计划）并替换。
-
 ### 4.5 教育背景（Education 区域）
 
-搜索 `edu-grid`，找到教育经历。每个 `edu-item` 是一条教育经历：
-
-```html
-<div class="edu-item">
-  <img class="edu-logo" src="assets/images/logos/university.png" alt="学校名" onerror="this.style.display='none'">
-  <div class="edu-info">
-    <strong>学位名称</strong>
-    <div style="font-size:var(--fs-small); color:var(--text-secondary);">
-      <a href="学校网址">学校名</a> · 学院名
-    </div>
-    <div style="font-size:var(--fs-small); color:var(--text-tertiary); margin-top:2px;">
-      GPA 3.96/5.00 | 均分 87.5 | 专业排名 2/40
-    </div>
-  </div>
-  <div class="edu-meta meta">2024 — Present</div>
-</div>
-```
+搜索 `edu-grid`，找到教育经历。每个 `edu-item` 是一条教育经历，修改学校名、专业、GPA、时间等。
 
 ### 4.6 联系方式
 
-搜索 `contact-info`，找到邮箱和地址。
+搜索 `contact-info`，找到邮箱和地址并替换。
 
-搜索 `五邑大学 电子与信息工程学院`，替换为你的地址。
+### 4.7 页脚（所有页面都要改）
 
-### 4.7 页脚
-
-搜索 `&copy; 2026 Zefeng Chen`，替换为你的名字和年份。**`index.html` 和 `social.html` 都要改**。
+搜索 `&copy; 2026 Zefeng Chen`，替换为你的名字和年份。
 
 ---
 
 ## 5. 如何添加/修改科研经历
 
-搜索 `research-list`，找到科研经历区域。每个 `research-item` 是一条科研经历：
+搜索 `research-list`，找到科研经历区域。科研经历**以项目为模块**组织，每个 `research-item` 是一个项目：
 
 ```html
 <div class="research-item">
   <div class="research-header">
     <div class="research-role" data-i18n="research_role1">Research Assistant</div>
-    <div class="research-meta meta">2025.06 — Present</div>
+    <div class="research-meta meta">2025.12 — Present</div>
   </div>
   <div class="research-org">
     <a href="https://www.wyu.edu.cn">五邑大学</a> · 电子与信息工程学院
   </div>
   <div class="research-supervisor">
-    Supervisor: <a href="#">Prof. Zhen Wang</a>, <a href="#">Prof. Chang Liu</a>
+    Supervisor: <a href="#">Prof. Zhenguo Wang</a>, <a href="#">Prof. Chenbin Liu</a>
   </div>
   <ul class="research-details">
-    <li data-i18n="research_desc1_1">研究内容描述1</li>
-    <li data-i18n="research_desc1_2">研究内容描述2</li>
+    <li data-i18n="research_desc1_1">研究内容描述</li>
   </ul>
 </div>
 ```
 
-### 字段说明
+### 添加新项目
 
-| 字段 | 说明 |
-|------|------|
-| `research-role` | 职位名称（如 Research Assistant），用 `data-i18n` 支持中英文 |
-| `research-meta` | 时间段 |
-| `research-org` | 机构名称，可包含链接 |
-| `research-supervisor` | 导师信息 |
-| `research-details` | 研究内容列表，每条用 `<li>` 包裹 |
-
-### 添加新经历
-
-复制一个 `research-item` 块，修改内容即可。如果需要中英文切换，记得在 `js/main.js` 的 `translations` 中添加对应的翻译键值对。
+复制一个 `research-item` 块，修改内容。记得在 `js/main.js` 的 `translations` 中添加对应的翻译键值对（如 `research_role4`、`research_desc4_1`）。
 
 ---
 
@@ -282,96 +250,46 @@ git push origin main
 
 搜索 `pub-list`，找到论文列表区域。
 
-### 论文条目 HTML 模板
+### 论文条目模板
 
 ```html
 <div class="pub-item" data-type="conference">
-  <div class="pub-thumb">
-    <img src="assets/images/publications/paper1.jpg" alt="论文缩略图"
-         onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--text-tertiary)\'>📄</div>';">
-  </div>
+  <div class="pub-thumb">...</div>
   <div class="pub-info">
-    <div class="pub-title">
-      <a href="论文链接">论文标题</a>
-    </div>
+    <div class="pub-title"><a href="论文链接">论文标题</a></div>
     <div class="pub-authors">
-      <span class="name-highlight">你的名字</span>,
-      合作者1,
-      <a href="通讯作者主页">通讯作者*</a>
+      <span class="name-highlight">你的名字</span>, 合作者1, <a href="#">通讯作者*</a>
     </div>
     <div class="pub-venue">
       <span class="venue-tag">会议/期刊名 年份</span>
-      状态说明（如 Accepted / Under Review）
+      状态说明
     </div>
     <div class="pub-buttons">
       <a href="PDF链接" class="pub-btn"><i class="fas fa-file-pdf"></i> PDF</a>
       <a href="代码链接" class="pub-btn"><i class="fab fa-github"></i> Code</a>
-      <details>
-        <summary>BibTeX</summary>
-        <div class="details-content">
-          <div class="bibtex-block">
-            <button class="copy-btn" onclick="copyBibtex(this)">Copy</button>
-@inproceedings{你的名字2026key,
-  title={论文标题},
-  author={作者全名1 and 作者全名2},
-  booktitle={会议缩写},
-  year={2026}
-}</div>
-        </div>
-      </details>
+      <details><summary>BibTeX</summary>...</details>
     </div>
   </div>
 </div>
 ```
 
-### 字段说明
+### 论文状态说明
 
-| 字段 | 说明 |
-|------|------|
-| `data-type` | 论文类型：`conference`（会议）、`journal`（期刊）、`preprint`（预印本） |
-| `name-highlight` | 用 `<span class="name-highlight">` 包裹你自己的名字，会**加粗蓝色**显示 |
-| `venue-tag` | 发表会议/期刊名称，会显示为蓝色标签 |
-
-### 按年份分组
-
-用 `<div class="pub-year-header">2026</div>` 创建年份标题，把同年的论文放在它下面。
+- `(Coming Soon)` — 论文已投稿，等待结果
+- `(Accepted)` — 已接收
+- `(Published)` — 已发表
 
 ---
 
 ## 7. 如何添加/修改项目
 
-搜索 `grid grid-3`（在 Projects 区域），找到项目卡片列表。
-
-### 项目卡片 HTML 模板
-
-```html
-<div class="project-card">
-  <div class="card-image">
-    <img src="assets/images/projects/project1.jpg" alt="项目名"
-         onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--text-tertiary);background:var(--bg-tag)\'>🔬</div>';">
-  </div>
-  <div class="card-body">
-    <div class="card-title">项目名称</div>
-    <div class="card-desc">项目描述，一两句话说明。</div>
-    <div class="card-tags">
-      <span class="tag">技术标签1</span>
-      <span class="tag">技术标签2</span>
-    </div>
-    <div class="card-links">
-      <a href="GitHub链接" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-      <a href="论文链接"><i class="fas fa-file-alt"></i> Paper</a>
-    </div>
-  </div>
-</div>
-```
+搜索 `grid grid-3`（在 Projects 区域），找到项目卡片列表。每个 `project-card` 是一个项目，包含图片、标题、描述、技术标签和链接。
 
 ---
 
 ## 8. 如何添加/修改新闻
 
 搜索 `news-list`，找到新闻列表。
-
-### 新闻条目 HTML 模板
 
 ```html
 <div class="news-item">
@@ -380,28 +298,8 @@ git push origin main
 </div>
 ```
 
-### 隐藏新闻（点击"展开更多"才显示）
-
-```html
-<div class="news-item news-hidden" style="display:none;">
-  <span class="news-date">2025.03</span>
-  <span class="news-content">这条新闻默认隐藏。</span>
-</div>
-```
-
-### 带动态圆点的新闻（表示最新/重要）
-
-在内容开头加 `<span class="pulse-dot"></span>`：
-
-```html
-<span class="news-content"><span class="pulse-dot"></span> 论文被 <strong>CVPR 2026</strong> 接收！</span>
-```
-
-### 注意事项
-
 - 新闻按时间倒序排列（最新的在最上面）
-- 默认显示前 8 条，多余的用 `news-hidden` 类隐藏
-- 日期格式建议用 `YYYY.MM`
+- 默认显示前若干条，多余的用 `class="news-item news-hidden" style="display:none;"` 隐藏
 
 ---
 
@@ -416,23 +314,11 @@ git push origin main
 </div>
 ```
 
-- 奖项按年份倒序排列，同年的放一起
-
 ---
 
 ## 10. 如何修改技术栈 Skills
 
-搜索 `skills-grid`，找到技能区域。每个 `skill-category` 是一个技能分类：
-
-```html
-<div class="skill-category">
-  <div class="skill-category-title" data-i18n="skill_lang">Languages</div>
-  <div class="skill-tags">
-    <span class="skill-tag" data-level="4">Python</span>
-    <span class="skill-tag" data-level="3">C++</span>
-  </div>
-</div>
-```
+搜索 `skills-grid`，找到技能区域。
 
 ### 熟练度等级
 
@@ -444,278 +330,247 @@ git push origin main
 
 ### 添加新技能
 
-在对应的 `skill-tags` 容器中添加：`<span class="skill-tag" data-level="3">新技能名</span>`
-
-### 添加新分类
-
-复制一个 `skill-category` 块，修改标题和技能列表。记得在 `js/main.js` 的 `translations` 中添加新分类的中英文翻译。
+```html
+<span class="skill-tag" data-level="3">新技能名</span>
+```
 
 ---
 
-## 11. 如何管理 Social 社交页面
+## 11. 如何管理 CV 简历页面
 
-Social 页面是一个**独立的 HTML 文件** (`social.html`)，不在主页上显示，通过导航栏的 "Social" 链接访问。
+CV 页面 (`cv.html`) 用于展示简历和成绩单，支持**在线预览**和**下载**。
 
-### 11.1 修改社交平台卡片
+### 11.1 替换简历 PDF
 
-打开 `social.html`，搜索 `social-grid`，找到社交卡片区域。每个 `social-card` 是一个平台：
+把你的简历文件重命名为 `resume.pdf`，放到 `assets/files/resume.pdf`，覆盖原文件。
 
-```html
-<div class="social-card">
-  <div class="social-card-icon github">
-    <i class="fab fa-github"></i>
-  </div>
-  <div class="social-card-name">GitHub</div>
-  <div class="social-card-desc" data-i18n="social_github_desc">Code repositories and open source projects</div>
-  <div class="social-card-actions">
-    <a href="https://github.com/zefengchen" target="_blank" rel="noopener" class="social-card-btn">
-      <i class="fas fa-external-link-alt"></i> <span data-i18n="social_visit">Visit</span>
-    </a>
-  </div>
-</div>
-```
+### 11.2 替换成绩单 PDF
 
-### 11.2 修改平台链接
+把成绩单文件重命名为 `transcript.pdf`，放到 `assets/files/transcript.pdf`，覆盖原文件。
 
-搜索对应的平台名称（如 `GitHub`、`Email`、`LinkedIn`），把 `href="#"` 替换为你的实际链接。
+### 11.3 添加更多文档
 
-### 11.3 添加/删除社交平台
+在 `cv.html` 中复制一个 `cv-card` 块，修改：
+- 图标颜色（`style="color: var(--accent-amber);"` 等）
+- 标题和描述
+- PDF 文件路径
+- 预览 iframe 的 ID
 
-**添加**：复制一个 `social-card` 块，修改图标、名称、描述和链接。
+### 11.4 预览功能说明
 
-**删除**：直接删掉对应的 `social-card` 块。
+预览使用 Google Docs Viewer，需要 PDF 文件在公网上可访问（即已部署到 GitHub Pages）。本地预览时可能无法加载。
 
-### 11.4 修改学术主页链接
+---
+
+## 12. 如何管理 Algorithms 算法页面
+
+算法页面 (`algorithms.html`) 目前是**占位页面**，后续可以详细设计。
+
+### 12.1 修改 OJ 平台链接
+
+搜索 `oj-card`，找到各平台卡片。修改 `href` 为你的实际账号链接，修改 Rating 为你的实际分数。
+
+### 12.2 添加竞赛经历
+
+搜索 `competition-history`，在占位区域替换为实际的竞赛记录。
+
+### 12.3 参考
+
+推荐参考 [silencer76.com](https://silencer76.com) 的算法板块设计，包含 OJ Rating 展示、竞赛经历时间线、算法学习工具等。
+
+---
+
+## 13. 如何管理 Social 社交页面
+
+### 13.1 修改社交平台卡片
+
+搜索 `social-grid`，找到社交卡片区域。每个 `social-card` 是一个平台，修改图标、名称、描述和链接。
+
+### 13.2 修改学术主页链接
 
 搜索 `web-presence-list`，找到学术主页列表（Google Scholar、ORCID、ResearchGate、Semantic Scholar），把 `href="#"` 替换为你的实际链接。
 
-### 11.5 Social 页面的图标颜色
+### 13.3 联系表单
 
-在 `social.html` 的 `<style>` 块中，每个平台的图标颜色由 CSS 类控制：
+联系表单使用 **FormSubmit.co**，消息会发送到 `820043928@qq.com`。
 
-```css
-.social-card-icon.github { background: #24292e; }
-.social-card-icon.email { background: var(--accent); }
-.social-card-icon.linkedin { background: #0a66c2; }
-.social-card-icon.zhihu { background: #0066ff; }
-.social-card-icon.bilibili { background: #fb7299; }
-.social-card-icon.wechat { background: #07c160; }
-.social-card-icon.csdn { background: #fc5531; }
-.social-card-icon.scholar { background: #4285f4; }
+**首次激活**：第一次有人通过表单发消息时，去邮箱点击确认链接。
+
+**修改接收邮箱**：搜索 `formsubmit.co/820043928@qq.com`，把邮箱替换为你的。
+
+**附件功能**：表单支持附件上传（PDF/DOC/JPG/PNG/ZIP），但 FormSubmit 免费版可能不支持附件。如需附件功能，建议改用 [Web3Forms](https://web3forms.com/)（250次/月免费，支持附件）。
+
+### 13.4 友链管理
+
+搜索 `friend-links-grid`，找到友链区域。
+
+**添加友链**：复制一个 `friend-link-card` 块，修改头像、名称、描述和链接。
+
+```html
+<a href="https://friend-site.com" target="_blank" rel="noopener" class="friend-link-card">
+  <div class="friend-link-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">F</div>
+  <div class="friend-link-info">
+    <div class="friend-link-name">Friend Name</div>
+    <div class="friend-link-desc">一句话描述</div>
+  </div>
+</a>
 ```
-
-### 11.6 Social 页面的中英文切换
-
-Social 页面和主页共享 `js/main.js`，所以中英文切换自动生效。所有带 `data-i18n` 属性的元素都会被翻译。如需修改翻译文字，在 `js/main.js` 的 `translations` 对象中搜索 `social_` 开头的键。
 
 ---
 
-## 12. 如何替换头像和图片
+## 14. 如何管理访客地图 ClustrMaps
+
+### 14.1 当前配置
+
+你的 ClustrMaps 站点 ID 是 `1c9te`，已嵌入在 `index.html` 的访客地图板块中。
+
+查看数据面板：`https://clustrmaps.com/site/1c9te`
+
+### 14.2 嵌入代码位置
+
+在 `index.html` 中搜索 `clustrmaps`，找到嵌入代码：
+
+```html
+<script id="clustrmaps" src="//clustrmaps.com/globe.js?d=1c9te" type="text/javascript"></script>
+```
+
+### 14.3 如果访客数据为 0
+
+1. 确认网站已部署到 GitHub Pages（本地预览不计入访客）
+2. 确认嵌入代码中的 ID 正确（`d=1c9te`）
+3. 访问一次你的网站，等几分钟后再查看 ClustrMaps 面板
+4. 如果仍为 0，去 ClustrMaps 设置页面检查追踪状态
+
+### 14.4 切换地图样式
+
+- **3D 地球仪**（当前）：`globe.js?d=1c9te`
+- **2D 平面地图**：`map_v2.js?d=1c9te&cl=ffffff&w=a&t=n&z=1`
+
+### 14.5 修改地图高度
+
+搜索 `clustrmaps-widget`，修改 `style="height: 300px;"` 中的数值。
+
+---
+
+## 15. 如何替换头像和图片
 
 ### 图片要求
 
-| 图片类型 | 建议尺寸 | 格式 | 存放位置 |
-|---------|---------|------|---------|
-| 头像 | 400×400（正方形） | JPG/PNG | `assets/images/profile.jpg` |
-| 论文缩略图 | 320×200（16:10） | JPG/PNG | `assets/images/publications/` |
-| 项目封面 | 600×400（3:2） | JPG/PNG | `assets/images/projects/` |
-| 画廊照片 | 800×600（4:3） | JPG/PNG | `assets/images/gallery/` |
-| 学校 Logo | 200×200（正方形） | PNG（透明背景） | `assets/images/logos/` |
-
-### 替换方法
-
-1. 准备好图片
-2. 重命名为对应的文件名
-3. 复制到对应的文件夹，覆盖原文件
-4. 刷新浏览器
+| 图片类型 | 建议尺寸 | 存放位置 |
+|---------|---------|---------|
+| 头像 | 400×400（正方形） | `assets/images/profile.jpg` |
+| 论文缩略图 | 320×200 | `assets/images/publications/` |
+| 项目封面 | 600×400 | `assets/images/projects/` |
+| 画廊照片 | 800×600 | `assets/images/gallery/` |
+| 学校 Logo | 200×200（PNG透明） | `assets/images/logos/` |
+| 微信二维码 | 正方形 | `assets/images/wechat-qr.jpg` |
+| 简历 PDF | — | `assets/files/resume.pdf` |
+| 成绩单 PDF | — | `assets/files/transcript.pdf` |
 
 ### 不放图片也行
 
-网站内置了图片加载失败的兜底方案：头像显示名字缩写、论文显示文件图标、项目显示 emoji。所以不放图片网站也能正常显示。
+网站内置了图片加载失败的兜底方案：头像显示名字缩写、论文显示文件图标、项目显示 emoji。
 
 ---
 
-## 13. 如何修改配色
+## 16. 如何修改配色
 
-打开 `css/theme.css`，搜索 `:root`，找到颜色变量定义。
-
-### 主要颜色变量
-
-```css
-:root {
-  /* 背景色 */
-  --bg-primary: #fafafa;       /* 页面主背景 */
-  --bg-secondary: #ffffff;     /* 卡片背景 */
-
-  /* 文字色 */
-  --text-primary: #1a1a1a;     /* 主文字 */
-  --text-secondary: #555555;   /* 次要文字 */
-  --text-tertiary: #999999;    /* 辅助文字 */
-
-  /* 强调色（最重要！） */
-  --accent: #1a56db;           /* 主强调色（深蓝） */
-  --accent-teal: #0d9488;      /* 青色辅助 */
-  --accent-amber: #d97706;     /* 琥珀色辅助 */
-}
-```
+打开 `css/theme.css`，搜索 `:root`，找到颜色变量。
 
 ### 快速换色方案
 
-**绿色学术风**：`--accent: #16a34a;` `--accent-hover: #15803d;`
+```css
+--accent: #1a56db;       /* 当前：深蓝 */
+--accent: #16a34a;       /* 绿色学术风 */
+--accent: #7c3aed;       /* 紫色学术风 */
+--accent: #dc2626;       /* 红色学术风 */
+```
 
-**紫色学术风**：`--accent: #7c3aed;` `--accent-hover: #6d28d9;`
-
-**红色学术风**：`--accent: #dc2626;` `--accent-hover: #b91c1c;`
-
-### 暗色模式
-
-暗色模式的颜色在 `css/theme.css` 中搜索 `[data-theme="dark"]` 即可找到并修改。
+暗色模式颜色在 `css/theme.css` 中搜索 `[data-theme="dark"]`。
 
 ---
 
-## 14. 导航栏与中英文切换系统
+## 17. 导航栏与中英文切换系统
 
-### 14.1 固定导航栏
+### 17.1 导航栏结构
 
-网站顶部有一个**固定导航栏**，滚动时始终可见：
+所有 4 个页面共享相同的导航栏：
 
-- 左侧：你的名字（点击回到主页顶部）
-- 中间：各板块快速跳转链接
-- 右侧：中英文切换按钮 🌐
-
-导航栏在桌面端（>768px）水平显示所有链接，手机端自动收起为汉堡菜单 ☰。
-
-### 14.2 修改导航栏
-
-在 `index.html` 中搜索 `navbar-links`：
-
-```html
-<div class="navbar-links" id="navbar-links">
-  <a href="#about" class="nav-link" data-i18n="nav_about">About</a>
-  <a href="#education" class="nav-link" data-i18n="nav_education">Education</a>
-  ...
-  <a href="social.html" class="nav-link" data-i18n="nav_social">Social</a>
-</div>
+```
+About | Education | Research | News | Publications | Projects | Honors | Skills | Gallery | Contact | CV | Algorithms | Social
 ```
 
-- **主页板块链接**用 `#板块id`（如 `#about`、`#publications`）
-- **Social 链接**指向 `social.html`（独立页面）
-- **添加导航项**：复制一行，修改 `href` 和文字
-- **删除导航项**：直接删掉对应的 `<a>` 标签
+- 主页板块链接用 `#板块id`（如 `#about`）
+- 独立页面链接：`cv.html`、`algorithms.html`、`social.html`
+- 其他页面的板块链接加 `index.html` 前缀（如 `index.html#about`）
 
-**注意**：`index.html` 和 `social.html` 各有自己的导航栏，**两个文件都要同步修改**。`social.html` 中的板块链接需要加 `index.html` 前缀（如 `index.html#about`）。
+### 17.2 修改导航栏
 
-### 14.3 中英文切换系统
+搜索 `navbar-links`，添加/删除 `<a>` 标签。**所有 4 个页面的导航栏都要同步修改。**
 
-点击导航栏右侧的 🌐 按钮（显示"中文"或"EN"）即可切换语言。
+### 17.3 中英文切换
 
-**切换的内容包括：**
-- 所有板块标题（About/关于、Education/教育背景、Research/科研经历 等）
-- Hero 区域标语
-- About 区域介绍文字
-- 高亮框内容
-- 科研经历职位名称和研究描述
-- 论文筛选标签（All/全部、Conferences/会议论文 等）
-- 技能分类标题（Languages/编程语言 等）
-- Social 页面所有文本
-- "Show More/展开更多" 按钮
+点击导航栏右侧的 🌐 按钮切换。切换内容包括：板块标题、Hero 标语、About 介绍、科研经历、论文筛选标签、技能分类、Social 页面文本、CV 页面文本等。
 
-**语言偏好自动保存**到浏览器，下次打开会记住你的选择。
-
-### 14.4 修改翻译内容
+### 17.4 修改翻译内容
 
 打开 `js/main.js`，搜索 `translations`：
 
 ```javascript
 const translations = {
   nav_about: { en: 'About', zh: '关于' },
-  nav_education: { en: 'Education', zh: '教育背景' },
-  nav_research: { en: 'Research', zh: '科研经历' },
-  // ... 更多
+  // ...
 };
 ```
 
-- **修改翻译**：直接改 `en` 或 `zh` 后面的字符串
-- **添加翻译**：添加 `key: { en: 'English', zh: '中文' }`
-- **About 中英文**：在 `index.html` 搜索 `about-en` 和 `about-cn`
-- **Hero 标语**：在 `js/main.js` 搜索 `heroTagline.innerHTML`
-- **高亮框**：在 `js/main.js` 搜索 `highlightBox.innerHTML`
+- 修改翻译：直接改 `en` 或 `zh` 后面的字符串
+- 添加翻译：添加 `key: { en: 'English', zh: '中文' }`
+- Hero 标语：搜索 `heroTagline.innerHTML`
+- 高亮框（未来计划）：搜索 `highlightBox.innerHTML`
 
-### 14.5 名言卡片
+### 17.5 Future Plan（未来计划）
 
-Hero 区域底部随机显示一条学术名言。修改方法：在 `js/main.js` 中搜索 `quotes`：
-
-```javascript
-const quotes = [
-  { text: '名言内容', author: '作者名' },
-  // 添加或修改...
-];
-```
+在 `js/main.js` 中搜索 `highlightBox`，修改中英文版本的"未来计划"内容。
 
 ---
 
-## 15. 常见问题 FAQ
+## 18. 常见问题 FAQ
 
 ### Q1: 修改后浏览器没有变化？
 
-按 `Ctrl + F5`（Windows）或 `Cmd + Shift + R`（Mac）强制刷新浏览器缓存。
+按 `Ctrl + F5`（Windows）或 `Cmd + Shift + R`（Mac）强制刷新。
 
 ### Q2: 中文显示乱码？
 
-确保文件以 **UTF-8 编码**保存。在 VS Code 中，点击右下角的编码选择器，选择 "Save with Encoding" → "UTF-8"。
+确保文件以 **UTF-8 编码**保存。
 
 ### Q3: GitHub Pages 页面空白？
 
-**最常见原因**：仓库名不等于你的 GitHub 用户名。仓库名必须是 `你的用户名.github.io`。详见 [第 3.2 节](#32-页面空白问题排查)。
+仓库名必须等于 `你的用户名.github.io`。详见 [第 3.2 节](#32-页面空白问题排查)。
 
-### Q4: 如何删除不需要的板块？
+### Q4: ClustrMaps 访客数据为 0？
 
-搜索对应的 `id`（如 `id="gallery"`），把整个 `<section ...>` 到 `</section>` 之间的内容删掉，同时删掉上面和下面的 `<hr class="section-divider">`。记得也删掉导航栏中对应的链接。
+确认网站已部署到 GitHub Pages，本地预览不计入访客。部署后访问一次网站，等几分钟查看。详见 [第 14.3 节](#143-如果访客数据为-0)。
 
-### Q5: 如何添加新的板块？
+### Q5: 联系表单发送失败？
 
-在任意两个 `<hr class="section-divider">` 之间插入：
+首次使用 FormSubmit 需要去邮箱确认激活。详见 [第 13.3 节](#133-联系表单)。
 
-```html
-<section class="section reveal" id="your-section-id">
-  <h2 class="section-title" data-i18n="nav_xxx">板块标题</h2>
-  <!-- 你的内容 -->
-</section>
-```
+### Q6: CV 预览无法加载？
 
-然后在导航栏添加对应链接，在 `js/main.js` 的 `translations` 中添加翻译。
+Google Docs Viewer 需要文件在公网可访问。本地预览时无法使用，部署到 GitHub Pages 后即可。
 
-### Q6: 如何修改字体？
+### Q7: 如何删除不需要的板块？
 
-打开 `css/theme.css`，修改字体变量：
+搜索对应 `id`（如 `id="gallery"`），把整个 `<section>` 到 `</section>` 删掉，同时删掉导航栏中对应的链接。
 
-```css
---font-heading: 'Inter', 'Noto Sans SC', sans-serif;
---font-body: 'Inter', 'Noto Sans SC', sans-serif;
-```
+### Q8: 如何添加新的独立页面？
 
-字体通过 Google Fonts 加载，在 `css/typography.css` 的 `@import` 中可以替换字体 URL。
+1. 复制任意一个页面（如 `algorithms.html`）作为模板
+2. 修改标题、内容和导航栏的 `active` 类
+3. 在所有其他页面的导航栏中添加新链接
+4. 在 `js/main.js` 的 `translations` 中添加翻译
 
-### Q7: 网站在手机上显示正常吗？
+### Q9: 如何备份网站？
 
-是的，已做响应式设计。导航栏在手机端自动变为汉堡菜单，卡片网格自动变为单列。
-
-### Q8: 论文状态从 Under Review 变成 Accepted 了怎么改？
-
-搜索 `Under Review`，替换为 `Accepted`。更新 `pub-title` 中的链接和 `pub-buttons` 中的 PDF 链接。
-
-### Q9: 如何添加网站访问统计？
-
-推荐 [Umami](https://umami.is/)（开源免费）或 Google Analytics。注册后在 `index.html` 和 `social.html` 的 `<head>` 标签内添加统计代码。
-
-### Q10: 如何备份网站？
-
-如果用 Git 管理（推荐），所有历史版本都在 GitHub 上。也可以定期把整个文件夹压缩备份到网盘。
-
-### Q11: Social 页面和主页的样式/脚本不同步怎么办？
-
-两个页面共享 `css/style.css` 和 `js/main.js`，所以样式和功能是同步的。Social 页面特有的样式写在 `social.html` 的 `<style>` 标签内。如果你修改了 `css/` 或 `js/` 中的文件，两个页面都会同时更新。
-
-### Q12: 如何把 Social 页面的某个平台移到主页？
-
-在 `social.html` 中找到对应的 `social-card` 块，复制到 `index.html` 中你想要的位置（比如 Contact 区域），然后调整样式即可。
+如果用 Git 管理，所有历史版本都在 GitHub 上。也可以定期压缩整个文件夹备份到网盘。
