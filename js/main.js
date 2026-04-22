@@ -233,7 +233,7 @@ function applyLanguage() {
     if (currentLang === 'zh') {
       highlightBox.innerHTML = '<strong>🎯 未来计划：</strong>保持对计算机科学和人工智能的纯粹好奇心，深入探索感兴趣的研究方向。希望能在科研中找到真正热爱的问题，与志同道合的伙伴一起做出有意义的贡献。同时也期待在算法竞赛中继续挑战自我，享受解题的乐趣。';
     } else {
-      highlightBox.innerHTML = '<strong>🎯 Future Plan:</strong>Maintain a genuine curiosity for computer science and AI, and dive deep into research directions I am truly passionate about. I look forward to finding problems I genuinely love, and making meaningful contributions alongside like-minded peers. I also look forward to continuing to challenge myself in competitive programming and enjoying the thrill of problem-solving.';
+      highlightBox.innerHTML = '<strong>🎯 Future Plan:</strong> Maintain a genuine curiosity for computer science and AI, and dive deep into research directions I am truly passionate about. I look forward to finding problems I genuinely love and making meaningful contributions alongside like-minded peers. I also look forward to continuing to challenge myself in competitive programming and enjoying the thrill of problem-solving.';
     }
   }
 

@@ -798,7 +798,3 @@ details > .details-content {
   gap: 1rem;
   margin-top: 0.5rem;
 }
-
-/* --- Visitor Map --- */
-.visitor-map-container { text-align: center; }
-.visitor-map-note { font-size: var(--fs-meta); color: var(--text-tertiary); margin-top: 0.5rem; }
