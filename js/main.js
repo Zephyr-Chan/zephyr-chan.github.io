@@ -222,18 +222,18 @@ function applyLanguage() {
   // Update hero tagline
   if (heroTagline) {
     if (currentLang === 'zh') {
-      heroTagline.innerHTML = '<span class="tagline-item">五邑大学 本科生</span><span class="tagline-sep">|</span><span class="tagline-item">软件工程</span><span class="tagline-sep">|</span><span class="tagline-item tagline-accent">研究方向：AI Agent & LLM</span>';
+      heroTagline.innerHTML = '<span class="tagline-item">五邑大学 本科生</span><span class="tagline-sep">|</span><span class="tagline-item">软件工程</span><span class="tagline-sep">|</span><span class="tagline-item tagline-accent">研究方向：AI Agent、LLM、BCI & Diffusion Model</span>';
     } else {
-      heroTagline.innerHTML = '<span class="tagline-item">Undergraduate at <a href="https://www.wyu.edu.cn">Wuyi University</a></span><span class="tagline-sep">|</span><span class="tagline-item">Software Engineering</span><span class="tagline-sep">|</span><span class="tagline-item tagline-accent">Research: AI Agent, LLM, BCI, Diffusion Model</span>';
+      heroTagline.innerHTML = '<span class="tagline-item">Undergraduate at <a href="https://www.wyu.edu.cn">Wuyi University</a></span><span class="tagline-sep">|</span><span class="tagline-item">Software Engineering</span><span class="tagline-sep">|</span><span class="tagline-item tagline-accent">Research: AI Agent, LLM, BCI & Diffusion Model</span>';
     }
   }
 
   // Update highlight box
   if (highlightBox) {
     if (currentLang === 'zh') {
-      highlightBox.innerHTML = '<strong>🎯 未来计划：</strong>计划攻读计算机类硕士研究生(MPhil)，对人工智能前沿科研怀有浓厚兴趣，期望在导师指导下参与科研实践。';
+      highlightBox.innerHTML = '<strong>🎯 未来计划：</strong>保持对计算机科学和人工智能的纯粹好奇心，深入探索感兴趣的研究方向。希望能在科研中找到真正热爱的问题，与志同道合的伙伴一起做出有意义的贡献。同时也期待在算法竞赛中继续挑战自我，享受解题的乐趣。';
     } else {
-      highlightBox.innerHTML = '<strong>🎯 Future Plan:</strong> Planning to pursue an MPhil degree in Computer Science, with a strong passion for cutting-edge AI research, and hoping to engage in research practice under the guidance of a supervisor.';
+      highlightBox.innerHTML = '<strong>🎯 Future Plan:</strong> Maintain a genuine curiosity for computer science and AI, and dive deep into research directions I am truly passionate about. I look forward to finding problems I genuinely love and making meaningful contributions alongside like-minded peers. I also look forward to continuing to challenge myself in competitive programming and enjoying the thrill of problem-solving.';
     }
   }
 
@@ -281,6 +281,41 @@ function applyLanguage() {
     social_send: { en: 'Send', zh: '发送' },
     social_qr: { en: 'QR Code', zh: '二维码' },
     web_presence_title: { en: 'Find Me Online', zh: '学术主页' },
+    nav_visitor_map: { en: 'Visitor Map', zh: '访客地图' },
+    visitor_map_note: { en: 'Real-time visitor locations tracked by ClustrMaps', zh: '由 ClustrMaps 追踪的实时访客地理位置' },
+    nav_algorithms: { en: 'Algorithms', zh: '算法' },
+    nav_cv: { en: 'CV', zh: '简历' },
+    nav_friend_links: { en: 'Friend Links', zh: '友链' },
+    friend_silencer76: { en: 'Code builds the world, algorithms change the future', zh: '代码构建世界，算法改变未来' },
+    friend_add_link: { en: 'Add Your Link', zh: '交换友链' },
+    friend_add_desc: { en: 'Want to exchange links? Contact me!', zh: '想要交换友链？联系我！' },
+    nav_contact_form: { en: 'Send Me a Message', zh: '给我留言' },
+    form_name: { en: 'Name', zh: '姓名' },
+    form_email: { en: 'Email', zh: '邮箱' },
+    form_subject: { en: 'Subject', zh: '主题' },
+    form_message: { en: 'Message', zh: '留言内容' },
+    form_send_btn: { en: 'Send Message', zh: '发送留言' },
+    algorithms_title: { en: 'Algorithm Arena', zh: '算法竞技场' },
+    algorithms_subtitle: { en: 'Sharpening problem-solving skills through competitive programming', zh: '通过竞赛编程磨砺问题解决能力' },
+    algorithms_coming_soon: { en: 'Detailed algorithm learning content is coming soon. Stay tuned!', zh: '详细的算法学习内容即将上线，敬请期待！' },
+    algorithms_competition_title: { en: 'Competition History', zh: '竞赛历程' },
+    algorithms_competition_placeholder: { en: 'Competition records will be displayed here...', zh: '竞赛记录将在此展示...' },
+    cv_title: { en: 'Curriculum Vitae', zh: '个人简历' },
+    cv_subtitle: { en: 'Academic and professional documents', zh: '学术与职业文档' },
+    cv_resume_title: { en: 'Resume / CV', zh: '个人简历' },
+    cv_resume_desc: { en: 'My academic resume including education, research experience, and publications', zh: '包含教育背景、科研经历和论文发表的学术简历' },
+    cv_transcript_title: { en: 'Academic Transcript', zh: '成绩单' },
+    cv_transcript_desc: { en: 'Official academic transcript from Wuyi University', zh: '五邑大学官方成绩单' },
+    cv_preview: { en: 'Preview', zh: '预览' },
+    cv_download: { en: 'Download', zh: '下载' },
+    cv_hide: { en: 'Hide', zh: '收起' },
+    cv_views: { en: 'views', zh: '次浏览' },
+    cv_intro: { en: 'Welcome to my document center. Here you can preview and download my academic resume and official transcript. Feel free to reach out if you need any additional information.', zh: '欢迎来到我的文档中心。在这里你可以预览和下载我的学术简历和官方成绩单。如需更多信息，请随时联系我。' },
+    cv_updated: { en: 'Updated', zh: '更新于' },
+    cv_no_preview: { en: 'Click Preview to view the document', zh: '点击预览查看文档' },
+    cv_tip: { en: 'Tip: Click Preview to view the document online, or click Download to save a copy. The preview uses Google Docs Viewer and may take a moment to load.', zh: '提示：点击预览可在线查看文档，点击下载可保存副本。预览使用 Google Docs Viewer，可能需要片刻加载。' },
+    form_attachment: { en: 'Attachment (optional)', zh: '附件（可选）' },
+    form_attachment_hint: { en: 'Click to upload or drag a file here', zh: '点击上传或拖拽文件到此处' },
   };
 
   document.querySelectorAll('[data-i18n]').forEach(el => {

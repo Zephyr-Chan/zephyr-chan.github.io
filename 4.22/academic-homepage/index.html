@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zefeng Chen — Academic Homepage</title>
+  <meta name="description" content="Personal academic homepage of Zefeng Chen. Undergraduate at Wuyi University, focusing on AI Agent, LLM, and Brain-Computer Interface.">
+  <meta name="keywords" content="Zefeng Chen, AI Agent, LLM, BCI, Diffusion Model academic">
+  <meta name="author" content="Zefeng Chen">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Zefeng Chen — Academic Homepage">
+  <meta property="og:description" content="Personal academic homepage of Zefeng Chen.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/profile.jpg">
+
+  <!-- Google Scholar -->
+  <meta name="citation_author" content="Zefeng Chen">
+  <meta name="citation_publication_date" content="2026/01/01">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Zefeng Chen",
+    "url": "https://zefengchen.github.io",
+    "jobTitle": "Undergraduate Student",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Wuyi University"
+    },
+    "sameAs": [
+      "https://github.com/Zephyr-Chan"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ========== SCROLL PROGRESS BAR ========== -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#hero" class="navbar-brand">Zefeng Chen</a>
+      <div class="navbar-links" id="navbar-links">
+        <a href="#about" class="nav-link" data-i18n="nav_about">About</a>
+        <a href="#education" class="nav-link" data-i18n="nav_education">Education</a>
+        <a href="#research" class="nav-link" data-i18n="nav_research">Research</a>
+        <a href="#news" class="nav-link" data-i18n="nav_news">News</a>
+        <a href="#publications" class="nav-link" data-i18n="nav_publications">Publications</a>
+        <a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a>
+        <a href="#honors" class="nav-link" data-i18n="nav_honors">Honors</a>
+        <a href="#skills" class="nav-link" data-i18n="nav_skills">Skills</a>
+        <a href="#gallery" class="nav-link" data-i18n="nav_gallery">Gallery</a>
+        <a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
+        <a href="cv.html" class="nav-link" data-i18n="nav_cv">CV</a>
+        <a href="algorithms.html" class="nav-link" data-i18n="nav_algorithms">Algorithms</a>
+        <a href="social.html" class="nav-link" data-i18n="nav_social">Social</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="lang-toggle" id="lang-toggle" onclick="toggleLanguage()">
+          <i class="fas fa-globe"></i> <span id="lang-label">中文</span>
+        </button>
+        <button class="navbar-menu-btn" id="navbar-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== CURSOR GLOW ========== -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- ========== LIGHTBOX ========== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Previous">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" aria-label="Next">&#8250;</button>
+    <img src="" alt="" id="lightbox-img">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- ========== COPY FEEDBACK ========== -->
+  <div class="copy-feedback" id="copy-feedback">Copied!</div>
+
+  <!-- ========== THEME TOGGLE ========== -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="container">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+      <div class="hero-avatar-wrapper hero-animate">
+        <img
+          class="hero-avatar"
+          src="assets/images/profile.jpg"
+          alt="Zefeng Chen"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+        <div class="hero-avatar-fallback" style="display:none;">Zefeng</div>
+      </div>
+
+      <h1 class="hero-name hero-animate">Zefeng Chen</h1>
+
+      <p class="hero-tagline hero-animate" id="hero-tagline">
+        <span class="tagline-item">Undergraduate at <a href="https://www.wyu.edu.cn">Wuyi University</a></span>
+        <span class="tagline-sep">|</span>
+        <span class="tagline-item">Software Engineering</span>
+        <span class="tagline-sep">|</span>
+        <span class="tagline-item tagline-accent">Research: AI Agent, LLM, BCI & Diffusion Model</span>
+      </p>
+
+      <div class="social-links hero-social hero-animate">
+        <a href="mailto:820043928@qq.com" class="social-btn">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+        <a href="https://github.com/Zephyr-Chan" class="social-btn" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/zefengchen" class="social-btn" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="cv.html" class="social-btn">
+          <i class="fas fa-file-pdf"></i> CV
+        </a>
+        <a href="social.html" class="social-btn">
+          <i class="fas fa-users"></i> Social
+        </a>
+      </div>
+
+      <!-- Quote -->
+      <div class="hero-quote hero-animate">
+        <span class="quote-mark">"</span>
+        <span id="hero-quote-text">The only way to do great work is to love what you do.</span>
+        <span class="quote-mark">"</span>
+        <div class="quote-author" id="hero-quote-author">— Steve Jobs</div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section reveal" id="about">
+      <h2 class="section-title" data-i18n="nav_about">About</h2>
+
+      <div class="bio-layout">
+        <div class="bio-image">
+          <img
+            src="assets/images/profile.jpg"
+            alt="Your Name"
+            style="width:120px; height:120px; border-radius:50%; object-fit:cover; border: 2px solid var(--border-color);"
+            onerror="this.outerHTML='<div style=\'width:120px;height:120px;border-radius:50%;background:var(--accent-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:2rem;font-weight:700;border:2px solid var(--border-color)\'>Ziven</div>';"
+          >
+        </div>
+        <div class="bio-content">
+          <div class="about-text" id="about-en">
+            <p>
+              I am an undergraduate student at <a href="https://www.wyu.edu.cn">Wuyi University</a>,
+              School of Electronic and Information Engineering, majoring in Software Engineering.
+              My research interests lie at the intersection of <strong>AI Agent</strong>, <strong>Large Language Models (LLM)</strong>,
+              <strong>Diffusion Models</strong>, and <strong>Brain-Computer Interface (BCI)</strong>.
+            </p>
+            <p>
+              Currently, I am leading two core research projects. The first involves developing a multimodal
+              AI Agent for automated radiotherapy treatment planning, with the goal of building an intelligent
+              system capable of clinical decision-making to optimize the radiotherapy workflow. The second
+              focuses on large model approaches for EEG signals, aiming to improve decoding accuracy and
+              enable cross-subject transfer of brain-computer interface systems.
+            </p>
+            <p>
+              I plan to pursue an MPhil degree in Computer Science to deepen my research capabilities and
+              contribute to the forefront of artificial intelligence. I am actively seeking academic
+              collaboration opportunities -- if you are interested in any form of collaboration or technical
+              exchange, please feel free to reach out via email or instant messaging.
+            </p>
+            <p>
+              Additionally, I maintain academic and personal growth columns on Zhihu and Xiaohongshu,
+              where I share insights and references for learners and researchers in related fields.
+            </p>
+          </div>
+
+          <div id="about-cn" class="about-text-cn" style="display:none;">
+            <p>
+              我是五邑大学电子与信息工程学院软件工程专业的一名本科生。我目前的研究兴趣聚焦于：
+              <strong>AI Agent</strong>、<strong>大语言模型(LLM)</strong>、<strong>扩散模型(diffusion model)</strong> 及
+              <strong>脑机接口(BCI)</strong>。目前，我正深入开展两项核心研究工作：一是多模态放疗自动计划AI Agent的开发，旨在构建具备临床决策能力的智能系统以优化放疗方案制定流程；二是脑电信号大模型的研究，致力于提升脑电数据的解码精度与跨被试迁移能力。
+              在学术规划方面，我计划攻读计算机科学与技术类硕士研究生(MPhil)，通过系统的科研训练提升学术研究能力和创新实践水平，为人工智能前沿发展贡献力量。
+              我目前在积极寻求各种潜在的学术合作机会，如果您正在寻找任何形式的学术合作或技术交流与分享，欢迎您随时通过邮件或即时通讯软件与我联系。
+              此外，我将在知乎和小红书平台维护个人学术与成长专栏，旨在为相关领域的学习者和研究者提供参考，助力更多人在学术与职业发展道路上建立自信、明确方向。
+            </p>
+          </div>
+
+          <div class="research-interests mt-md">
+            <span class="tag">AI Agent</span>
+            <span class="tag">LLM</span>
+            <span class="tag">Brain-Computer Interface</span>
+            <span class="tag">diffusion model</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">PyTorch</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highlight Box -->
+      <div class="highlight-box mt-md" id="highlight-box">
+        <strong>🎯 未来计划：</strong>
+        计划申请并攻读计算机科学与技术硕士（MPhil）学位，系统深入地学习前沿技术知识与研究方法。重点关注人工智能领域的前沿科研方向，致力于参与高质量学术研究并发表相关成果。同时，将持续进行系统化的算法竞赛训练，提升算法设计与问题解决能力，目标在国内外高水平算法竞赛中取得优异成绩，为学术研究与技术应用奠定坚实基础。
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== EDUCATION ===== -->
+    <section class="section reveal" id="education">
+      <h2 class="section-title" data-i18n="nav_education">Education</h2>
+
+      <div class="edu-grid">
+        <div class="edu-item">
+          <img class="edu-logo" src="assets/images/logos/university.png" alt="Wuyi University" onerror="this.style.display='none'">
+          <div class="edu-info">
+            <strong>B.S. in Software Engineering</strong>
+            <div style="font-size:var(--fs-small); color:var(--text-secondary);">
+              <a href="https://www.wyu.edu.cn">五邑大学</a> · 电子与信息工程学院
+            </div>
+            <div style="font-size:var(--fs-small); color:var(--text-tertiary); margin-top:2px;">
+              GPA 3.97/5.00 | 均分 88.5 | 专业排名 2/40
+            </div>
+          </div>
+          <div class="edu-meta meta">2024 — Present</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== RESEARCH EXPERIENCE ===== -->
+    <section class="section reveal" id="research">
+      <h2 class="section-title" data-i18n="nav_research">Research Experience</h2>
+
+      <div class="research-list">
+        <div class="research-item">
+          <div class="research-header">
+            <div class="research-role" data-i18n="research_role1">Research Assistant</div>
+            <div class="research-meta meta">2025.12 — Present</div>
+          </div>
+          <div class="research-org">
+            <a href="https://www.wyu.edu.cn">五邑大学</a> · 电子与信息工程学院
+          </div>
+          <div class="research-supervisor">
+            Supervisor: <a href="#">Prof. Zhenguo Wang</a>, <a href="#">Prof. Chenbin Liu</a>
+          </div>
+          <ul class="research-details">
+            <li data-i18n="research_desc1_1">Developing a multimodal AI Agent for automated radiotherapy treatment planning based on Large Language Models, building an intelligent system with clinical decision-making capabilities to optimize the radiotherapy planning workflow.</li>
+          </ul>
+        </div>
+
+        <div class="research-item">
+          <div class="research-header">
+            <div class="research-role" data-i18n="research_role2">Research Assistant</div>
+            <div class="research-meta meta">2026.02 — Present</div>
+          </div>
+          <div class="research-org">
+            <a href="https://www.wyu.edu.cn">五邑大学</a> · 电子与信息工程学院
+          </div>
+          <div class="research-supervisor">
+            Supervisor: <a href="#">Prof. Hongtao Wang</a>
+          </div>
+          <ul class="research-details">
+            <li data-i18n="research_desc2_1">Exploring large model approaches for EEG signals to improve decoding accuracy and cross-subject transfer capability.</li>
+          </ul>
+        </div>
+
+
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== NEWS ===== -->
+    <section class="section reveal" id="news">
+      <h2 class="section-title" data-i18n="nav_news">News</h2>
+
+      <div id="news-list">
+        <div class="news-item">
+          <span class="news-date">2026.05</span>
+          <span class="news-content">获美国大学生数学建模竞赛(MCM/ICM) <strong>H奖</strong></span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2026.04</span>
+          <span class="news-content">获中国团体程序设计天梯赛华山论剑组 <strong>广东省三等奖</strong></span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2025.08</span>
+          <span class="news-content">获世界机器人大赛 BCI脑控机器人 ECOG/MI/SSVEP赛项 <strong>国家级三等奖</strong></span>
+        </div>
+        <!-- Hidden news items -->
+        <div class="news-item news-hidden" style="display:none;">
+          <span class="news-date">2025.03</span>
+          <span class="news-content">获全国大学生数据统计与分析大赛 <strong>三等奖</strong></span>
+        </div>
+        <div class="news-item news-hidden" style="display:none;">
+          <span class="news-date">2024.12</span>
+          <span class="news-content">获数维杯国际大学生数学建模挑战赛 <strong>优胜奖</strong></span>
+        </div>
+        <div class="news-item news-hidden" style="display:none;">
+          <span class="news-date">2024.09</span>
+          <span class="news-content">加入ACM校队，开始系统训练算法竞赛</span>
+        </div>
+      </div>
+
+      <button class="show-more-btn" id="news-toggle" data-i18n="show_more" onclick="toggleNews()">
+        Show More ▼
+      </button>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== PUBLICATIONS ===== -->
+    <section class="section reveal" id="publications">
+      <h2 class="section-title" data-i18n="nav_publications">Publications</h2>
+
+      <!-- Filter Tags -->
+      <div class="filter-tags" id="pub-filters">
+        <span class="filter-tag active" data-filter="all" data-i18n="filter_all" onclick="filterPubs('all', this)">All</span>
+        <span class="filter-tag" data-filter="conference" data-i18n="filter_conf" onclick="filterPubs('conference', this)">Conferences</span>
+        <span class="filter-tag" data-filter="journal" data-i18n="filter_journal" onclick="filterPubs('journal', this)">Journals</span>
+        <span class="filter-tag" data-filter="preprint" data-i18n="filter_preprint" onclick="filterPubs('preprint', this)">Preprints</span>
+      </div>
+
+      <!-- Publication List -->
+      <div id="pub-list">
+
+        <!-- 2026 -->
+        <div class="pub-year-header">2026</div>
+
+        <div class="pub-item" data-type="journal">
+          <div class="pub-thumb">
+            <img src="assets/images/publications/paper4.jpg" alt="Paper thumbnail" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--text-tertiary)\'>📄</div>';">
+          </div>
+          <div class="pub-info">
+            <div class="pub-title">
+              <a href="#">Adaptive proton therapy: A comprehensive review of enabling technologies for online personalized treatment optimization</a>
+            </div>
+            <div class="pub-authors">
+              Xiao H, Li Y, Yuan C, Chen C, Zhao M,
+              <span class="name-highlight">Chen Z</span>,
+              Zhao W, Li C, Sio TTW, Liu W,
+              <a href="#">Wang Z*</a>,
+              <a href="#">Liu C*</a>
+            </div>
+            <div class="pub-venue">
+              <span class="venue-tag">Physics and Imaging in Radiation Oncology</span>
+              (Coming Soon)
+            </div>
+            <div class="pub-buttons">
+              <a href="#" class="pub-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+              <details>
+                <summary>BibTeX</summary>
+                <div class="details-content">
+                  <div class="bibtex-block">
+                    <button class="copy-btn" onclick="copyBibtex(this)">Copy</button>
+@article{xiao2026adaptive,
+  title={Adaptive proton therapy: A comprehensive review of enabling technologies for online personalized treatment optimization},
+  author={Hao Xiao and Yuxin Li and Chen Yuan and Chen Chen and Ming Zhao and Zefeng Chen and Wei Zhao and Chen Li and Thomas T.W. Sio and Wei Liu and Zhen Wang and Cheng Liu},
+  journal={Physics and Imaging in Radiation Oncology},
+  year={2026}
+}</div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section reveal" id="projects">
+      <h2 class="section-title" data-i18n="nav_projects">Projects</h2>
+
+      <div class="grid grid-3">
+
+        <div class="project-card">
+          <div class="card-image">
+            <img src="assets/images/projects/project1.jpg" alt="Radiotherapy Agent" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--text-tertiary);background:var(--bg-tag)\'>🤖</div>';">
+          </div>
+          <div class="card-body">
+            <div class="card-title">Agentic AI for Automated Radiology Treatment Planning</div>
+            <div class="card-desc">基于大语言模型的放疗计划Agent开发，探索LLM在医疗领域的应用。</div>
+            <div class="card-tags">
+              <span class="tag">LLM</span>
+              <span class="tag">Agent</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">Docker</span>
+            </div>
+            <div class="card-links">
+              <a href="#" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+              <a href="#"><i class="fas fa-file-alt"></i> Paper</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="card-image">
+            <img src="assets/images/projects/project2.jpg" alt="EEG Large Model" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--text-tertiary);background:var(--bg-tag)\'>🧠</div>';">
+          </div>
+          <div class="card-body">
+            <div class="card-title">EEG Large Model (脑电大模型)</div>
+            <div class="card-desc">国家级立项，探索脑电信号的大模型方法。</div>
+            <div class="card-tags">
+              <span class="tag">EEG</span>
+              <span class="tag">Deep Learning</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">BCI</span>
+            </div>
+            <div class="card-links">
+              <a href="#" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+              <a href="#"><i class="fas fa-file-alt"></i> Paper</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="card-image">
+            <img src="assets/images/projects/project3.jpg" alt="LLM Reproduction" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--text-tertiary);background:var(--bg-tag)\'>🔬</div>';">
+          </div>
+          <div class="card-body">
+            <div class="card-title">LLM Reproduction & Agent Exploration</div>
+            <div class="card-desc">复现MiniMind、Medical GPT等大模型，探索VLM和Diffusion Theory。</div>
+            <div class="card-tags">
+              <span class="tag">LLM</span>
+              <span class="tag">VLM</span>
+              <span class="tag">Diffusion</span>
+              <span class="tag">Python</span>
+            </div>
+            <div class="card-links">
+              <a href="#" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== HONORS & AWARDS ===== -->
+    <section class="section reveal" id="honors">
+      <h2 class="section-title" data-i18n="nav_honors">Honors &amp; Awards</h2>
+
+      <div>
+        <div class="honor-item">
+          <span class="honor-year">2026</span>
+          <span class="honor-info">美国大学生数学建模竞赛(MCM/ICM) <strong>H奖</strong></span>
+        </div>
+        <div class="honor-item">
+          <span class="honor-year">2026</span>
+          <span class="honor-info">团体程序设计天梯赛华山论剑组 <strong>广东省三等奖</strong></span>
+        </div>
+        <div class="honor-item">
+          <span class="honor-year">2025</span>
+          <span class="honor-info">世界机器人大赛 BCI脑控机器人 <strong>国家级三等奖</strong></span>
+        </div>
+        <div class="honor-item">
+          <span class="honor-year">2025</span>
+          <span class="honor-info">广东省大学生程序设计竞赛(GDCPC) <strong>铁牌</strong></span>
+        </div>
+        <div class="honor-item">
+          <span class="honor-year">2025</span>
+          <span class="honor-info">全国大学生数据统计与分析大赛 <strong>三等奖</strong></span>
+        </div>
+        <div class="honor-item">
+          <span class="honor-year">2025</span>
+          <span class="honor-info">数维杯国际大学生数学建模挑战赛 <strong>优胜奖</strong></span>
+        </div>
+        <div class="honor-item">
+          <span class="honor-year">2025</span>
+          <span class="honor-info">ACM程序设计竞赛校赛 <strong>三等奖</strong></span>
+        </div>
+        <div class="honor-item">
+          <span class="honor-year">2022</span>
+          <span class="honor-info">CCF CSP-J 广东入门级第一轮 <strong>二等奖</strong></span>
+        </div>
+        <div class="honor-item">
+          <span class="honor-year">2022</span>
+          <span class="honor-info">CCF CSP-S 广东提高组第一轮 <strong>二等奖</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section reveal" id="skills">
+      <h2 class="section-title" data-i18n="nav_skills">Skills</h2>
+
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-category-title" data-i18n="skill_lang">Languages</div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="4">Python</span>
+            <span class="skill-tag" data-level="3">C++</span>
+            <span class="skill-tag" data-level="3">Java</span>
+            <span class="skill-tag" data-level="2">Go</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title" data-i18n="skill_fw">Frameworks</div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="4">PyTorch</span>
+            <span class="skill-tag" data-level="3">LangChain</span>
+            <span class="skill-tag" data-level="3">LangGraph</span>
+            <span class="skill-tag" data-level="2">Docker</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title" data-i18n="skill_ml">ML / DL</div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="4">CNN</span>
+            <span class="skill-tag" data-level="4">Transformer</span>
+            <span class="skill-tag" data-level="3">BERT</span>
+            <span class="skill-tag" data-level="3">RNN</span>
+            <span class="skill-tag" data-level="2">Diffusion</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title" data-i18n="skill_tools">Tools</div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="4">Git</span>
+            <span class="skill-tag" data-level="3">Linux</span>
+            <span class="skill-tag" data-level="3">LaTeX</span>
+            <span class="skill-tag" data-level="2">Figma</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== GALLERY ===== -->
+    <section class="section reveal" id="gallery">
+      <h2 class="section-title" data-i18n="nav_gallery">Gallery</h2>
+
+      <div class="gallery-grid" id="gallery-grid">
+        <div class="gallery-item" data-index="0" onclick="openLightbox(0)">
+          <img src="assets/images/gallery/photo1.jpg" alt="Conference photo" loading="lazy"
+               onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-tag);font-size:1.5rem\'>📷</div>';">
+          <div class="gallery-overlay"><span>CVPR 2026</span></div>
+        </div>
+        <div class="gallery-item" data-index="1" onclick="openLightbox(1)">
+          <img src="assets/images/gallery/photo2.jpg" alt="Lab photo" loading="lazy"
+               onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-tag);font-size:1.5rem\'>🔬</div>';">
+          <div class="gallery-overlay"><span>Lab Meeting</span></div>
+        </div>
+        <div class="gallery-item" data-index="2" onclick="openLightbox(2)">
+          <img src="assets/images/gallery/photo3.jpg" alt="Presentation" loading="lazy"
+               onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-tag);font-size:1.5rem\'>🎤</div>';">
+          <div class="gallery-overlay"><span>Invited Talk</span></div>
+        </div>
+        <div class="gallery-item" data-index="3" onclick="openLightbox(3)">
+          <img src="assets/images/gallery/photo4.jpg" alt="Team photo" loading="lazy"
+               onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-tag);font-size:1.5rem\'>👥</div>';">
+          <div class="gallery-overlay"><span>Team Dinner</span></div>
+        </div>
+        <div class="gallery-item" data-index="4" onclick="openLightbox(4)">
+          <img src="assets/images/gallery/photo5.jpg" alt="Award ceremony" loading="lazy"
+               onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-tag);font-size:1.5rem\'>🏅</div>';">
+          <div class="gallery-overlay"><span>Award Ceremony</span></div>
+        </div>
+        <div class="gallery-item" data-index="5" onclick="openLightbox(5)">
+          <img src="assets/images/gallery/photo6.jpg" alt="Workshop" loading="lazy"
+               onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-tag);font-size:1.5rem\'>🎓</div>';">
+          <div class="gallery-overlay"><span>Workshop</span></div>
+        </div>
+        <div class="gallery-item" data-index="6" onclick="openLightbox(6)">
+          <img src="assets/images/gallery/photo7.jpg" alt="Travel" loading="lazy"
+               onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-tag);font-size:1.5rem\'>✈️</div>';">
+          <div class="gallery-overlay"><span>Academic Visit</span></div>
+        </div>
+        <div class="gallery-item" data-index="7" onclick="openLightbox(7)">
+          <img src="assets/images/gallery/photo8.jpg" alt="Demo" loading="lazy"
+               onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-tag);font-size:1.5rem\'>💻</div>';">
+          <div class="gallery-overlay"><span>Project Demo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section reveal" id="contact">
+      <h2 class="section-title" data-i18n="nav_contact">Contact</h2>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:820043928@qq.com">820043928@qq.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>五邑大学 电子与信息工程学院</span>
+        </div>
+      </div>
+
+      <div class="social-links mt-md">
+        <a href="mailto:820043928@qq.com" class="social-btn">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+        <a href="https://github.com/Zephyr-Chan" class="social-btn" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== VISITOR MAP ===== -->
+  <section class="section reveal" id="visitor-map">
+    <h2 class="section-title" data-i18n="nav_visitor_map">Visitor Map</h2>
+    <div class="visitor-map-container">
+      <div id="clustrmaps-widget" style="height: 300px; width: 100%; border-radius: var(--card-radius); overflow: hidden;">
+        <script id="clustrmaps" src="//clustrmaps.com/globe.js?d=1c9te" type="text/javascript"></script>
+      </div>
+      <p class="visitor-map-note" data-i18n="visitor_map_note">Real-time visitor locations tracked by ClustrMaps</p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Zefeng Chen. Built with &hearts; and &coffee;</p>
+    <div class="footer-links">
+      <a href="#hero">Top</a>
+      <span style="color:var(--border-color);">|</span>
+      <a href="https://github.com/Zephyr-Chan/zephyr-chan.github.io" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Source
+      </a>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="js/main.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/publications.js"></script>
+  <script src="js/animations.js"></script>
+
+</body>
+</html>

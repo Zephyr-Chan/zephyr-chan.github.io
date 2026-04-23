@@ -71,6 +71,18 @@
       text-decoration: none;
     }
 
+    /* Stagger Animation */
+    .oj-card { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.5s ease forwards; }
+    .oj-card:nth-child(1) { animation-delay: 0.1s; }
+    .oj-card:nth-child(2) { animation-delay: 0.2s; }
+    .oj-card:nth-child(3) { animation-delay: 0.3s; }
+    .oj-card:nth-child(4) { animation-delay: 0.4s; }
+    .oj-card:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .oj-card-icon {
       width: 52px;
       height: 52px;
@@ -142,6 +154,24 @@
       font-size: var(--fs-small);
     }
 
+    /* Algorithm Templates & VP Notes */
+    .algo-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 768px) { .algo-tabs { grid-template-columns: 1fr; } }
+    .algo-tab { border: 1px solid var(--border-light); border-radius: var(--card-radius); overflow: hidden; }
+    .algo-tab-header { padding: 1rem 1.2rem; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between; background: var(--bg-secondary); }
+    .algo-tab-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem; }
+    .algo-tab-count { font-size: var(--fs-meta); color: var(--text-tertiary); background: var(--bg-tag); padding: 2px 8px; border-radius: 10px; }
+    .algo-tab-body { padding: 0.5rem; }
+    .algo-item { display: flex; align-items: center; gap: 0.8rem; padding: 0.7rem 0.8rem; border-radius: 8px; transition: background 0.2s; cursor: pointer; }
+    .algo-item:hover { background: var(--bg-tag); }
+    .algo-item-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: var(--accent-light); color: var(--accent); font-size: 0.85rem; flex-shrink: 0; }
+    .algo-item-info { flex: 1; }
+    .algo-item-name { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
+    .algo-item-meta { font-size: var(--fs-meta); color: var(--text-tertiary); }
+    .algo-item-action { color: var(--text-tertiary); font-size: 0.8rem; }
+    .algo-empty { text-align: center; padding: 2rem; color: var(--text-tertiary); font-size: var(--fs-small); }
+    .algo-empty i { font-size: 2rem; margin-bottom: 0.5rem; display: block; opacity: 0.5; }
+
     /* Responsive */
     @media (max-width: 700px) {
       .oj-grid {
@@ -176,6 +206,7 @@
         <a href="index.html#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
         <a href="cv.html" class="nav-link" data-i18n="nav_cv">CV</a>
         <a href="algorithms.html" class="nav-link active" data-i18n="nav_algorithms">Algorithms</a>
+        <a href="resources.html" class="nav-link" data-i18n="nav_resources">Resources</a>
         <a href="social.html" class="nav-link" data-i18n="nav_social">Social</a>
       </div>
       <div class="navbar-actions">
@@ -258,6 +289,99 @@
           <div class="oj-card-name">Nowcoder</div>
           <div class="oj-card-desc">nowcoder.com</div>
         </a>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Algorithm Templates & VP Notes -->
+    <section class="section reveal" id="algo-templates-vp">
+      <h2 class="section-title" data-i18n="algo_templates_vp_title">Algorithm Templates & VP Notes</h2>
+
+      <div class="algo-tabs">
+        <!-- Left Column: Algorithm Templates -->
+        <div class="algo-tab">
+          <div class="algo-tab-header">
+            <div class="algo-tab-title">
+              <i class="fas fa-code"></i>
+              <span data-i18n="algo_templates">Algorithm Templates</span>
+            </div>
+            <span class="algo-tab-count">5</span>
+          </div>
+          <div class="algo-tab-body">
+            <div class="algo-item">
+              <div class="algo-item-icon">
+                <i class="fas fa-table-cells"></i>
+              </div>
+              <div class="algo-item-info">
+                <div class="algo-item-name">DP (Dynamic Programming)</div>
+                <div class="algo-item-meta" data-i18n="algo_dp_meta">经典动态规划模板</div>
+              </div>
+              <div class="algo-item-action"><i class="fas fa-chevron-right"></i></div>
+            </div>
+
+            <div class="algo-item">
+              <div class="algo-item-icon">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <div class="algo-item-info">
+                <div class="algo-item-name">Graph</div>
+                <div class="algo-item-meta" data-i18n="algo_graph_meta">最短路、最小生成树等</div>
+              </div>
+              <div class="algo-item-action"><i class="fas fa-chevron-right"></i></div>
+            </div>
+
+            <div class="algo-item">
+              <div class="algo-item-icon">
+                <i class="fas fa-font"></i>
+              </div>
+              <div class="algo-item-info">
+                <div class="algo-item-name">String</div>
+                <div class="algo-item-meta" data-i18n="algo_string_meta">KMP、AC自动机等</div>
+              </div>
+              <div class="algo-item-action"><i class="fas fa-chevron-right"></i></div>
+            </div>
+
+            <div class="algo-item">
+              <div class="algo-item-icon">
+                <i class="fas fa-square-root-variable"></i>
+              </div>
+              <div class="algo-item-info">
+                <div class="algo-item-name">Math</div>
+                <div class="algo-item-meta" data-i18n="algo_math_meta">数论、组合数学等</div>
+              </div>
+              <div class="algo-item-action"><i class="fas fa-chevron-right"></i></div>
+            </div>
+
+            <div class="algo-item">
+              <div class="algo-item-icon">
+                <i class="fas fa-sitemap"></i>
+              </div>
+              <div class="algo-item-info">
+                <div class="algo-item-name">Data Structure</div>
+                <div class="algo-item-meta" data-i18n="algo_ds_meta">线段树、树状数组等</div>
+              </div>
+              <div class="algo-item-action"><i class="fas fa-chevron-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: VP Notes -->
+        <div class="algo-tab">
+          <div class="algo-tab-header">
+            <div class="algo-tab-title">
+              <i class="fas fa-pen-to-square"></i>
+              <span data-i18n="algo_vp_notes">VP Notes</span>
+            </div>
+            <span class="algo-tab-count">0</span>
+          </div>
+          <div class="algo-tab-body">
+            <div class="algo-empty">
+              <i class="fas fa-inbox"></i>
+              <p data-i18n="algo_empty_vp">Contest VP writeups will be added here</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

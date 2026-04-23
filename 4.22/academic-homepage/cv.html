@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Zefeng Chen</title>
+  <meta name="description" content="Curriculum Vitae and academic documents of Zefeng Chen.">
+  <meta name="author" content="Zefeng Chen">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CV — Zefeng Chen">
+  <meta property="og:description" content="Curriculum Vitae and academic documents of Zefeng Chen.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* === CV Page Specific Styles === */
+
+    /* Page Header */
+    .page-header {
+      text-align: center;
+      padding: 7rem 0 1rem;
+    }
+
+    .page-header-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-teal));
+      color: #fff;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .page-header h1 {
+      font-size: var(--fs-hero-name);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      font-size: var(--fs-small);
+      color: var(--text-tertiary);
+      font-weight: 400;
+    }
+
+    .page-intro {
+      max-width: 600px;
+      margin: 1rem auto 0;
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* CV Documents */
+    .cv-documents {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .cv-card {
+      border: 1px solid var(--border-light);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      background: var(--bg-card);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cv-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    .cv-card.resume-card {
+      border-left: 4px solid var(--accent);
+    }
+
+    .cv-card.transcript-card {
+      border-left: 4px solid var(--accent-teal);
+    }
+
+    .cv-card-header {
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cv-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cv-card-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .cv-card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-mono);
+      font-size: var(--fs-tag);
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-tag);
+      border: 1px solid var(--border-light);
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .cv-card-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-light);
+      text-decoration: none;
+    }
+
+    .cv-card-btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .cv-card-btn.primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .cv-card-body {
+      padding: 1.2rem 1.5rem;
+    }
+
+    .cv-card-desc {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .cv-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: var(--fs-meta);
+      color: var(--text-tertiary);
+      flex-wrap: wrap;
+    }
+
+    .cv-card-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .cv-card-meta-item i {
+      font-size: 0.7rem;
+    }
+
+    /* Preview placeholder */
+    .cv-preview-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-tertiary);
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-light);
+      gap: 0.8rem;
+    }
+
+    .cv-preview-placeholder i {
+      font-size: 2.5rem;
+      opacity: 0.4;
+    }
+
+    .cv-preview-placeholder span {
+      font-size: var(--fs-small);
+      opacity: 0.6;
+    }
+
+    .cv-preview {
+      display: none;
+      height: 600px;
+      border: none;
+      width: 100%;
+      border-radius: 0 0 var(--card-radius) var(--card-radius);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .cv-preview.active {
+      display: block;
+    }
+
+    .cv-preview.loading {
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cv-preview-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--text-tertiary);
+    }
+
+    .cv-preview-loading .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--border-light);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: cv-spin 0.8s linear infinite;
+    }
+
+    @keyframes cv-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .cv-preview-loading span {
+      font-size: var(--fs-small);
+    }
+
+    .cv-view-count {
+      font-size: var(--fs-meta);
+      color: var(--text-tertiary);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Tip Box */
+    .cv-tip-box {
+      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, var(--bg-highlight), var(--bg-secondary));
+      border: 1px solid var(--border-light);
+      border-radius: var(--card-radius);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .cv-tip-box i {
+      color: var(--accent-amber);
+      font-size: 1.1rem;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .cv-documents {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header {
+        padding: 6rem 0 1.5rem;
+      }
+
+      .cv-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+
+      .cv-preview {
+        height: 450px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== SCROLL PROGRESS BAR ========== -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">Zefeng Chen</a>
+      <div class="navbar-links" id="navbar-links">
+        <a href="index.html#about" class="nav-link" data-i18n="nav_about">About</a>
+        <a href="index.html#education" class="nav-link" data-i18n="nav_education">Education</a>
+        <a href="index.html#research" class="nav-link" data-i18n="nav_research">Research</a>
+        <a href="index.html#news" class="nav-link" data-i18n="nav_news">News</a>
+        <a href="index.html#publications" class="nav-link" data-i18n="nav_publications">Publications</a>
+        <a href="index.html#projects" class="nav-link" data-i18n="nav_projects">Projects</a>
+        <a href="index.html#honors" class="nav-link" data-i18n="nav_honors">Honors</a>
+        <a href="index.html#skills" class="nav-link" data-i18n="nav_skills">Skills</a>
+        <a href="index.html#gallery" class="nav-link" data-i18n="nav_gallery">Gallery</a>
+        <a href="index.html#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
+        <a href="cv.html" class="nav-link active" data-i18n="nav_cv">CV</a>
+        <a href="algorithms.html" class="nav-link" data-i18n="nav_algorithms">Algorithms</a>
+        <a href="social.html" class="nav-link" data-i18n="nav_social">Social</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="lang-toggle" id="lang-toggle" onclick="toggleLanguage()">
+          <i class="fas fa-globe"></i> <span id="lang-label">中文</span>
+        </button>
+        <button class="navbar-menu-btn" id="navbar-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== CURSOR GLOW ========== -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- ========== COPY FEEDBACK ========== -->
+  <div class="copy-feedback" id="copy-feedback">Copied!</div>
+
+  <!-- ========== THEME TOGGLE ========== -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="container">
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-icon">
+        <i class="fas fa-id-card"></i>
+      </div>
+      <h1 data-i18n="cv_title">Curriculum Vitae</h1>
+      <p class="page-subtitle" data-i18n="cv_subtitle">Academic and professional documents</p>
+      <p class="page-intro" data-i18n="cv_intro">Welcome to my document center. Here you can preview and download my academic resume and official transcript. Feel free to reach out if you need any additional information.</p>
+    </section>
+
+    <!-- CV Documents -->
+    <section class="section reveal" id="cv-documents">
+      <div class="cv-documents">
+
+        <!-- Resume / CV Card -->
+        <div class="cv-card resume-card">
+          <div class="cv-card-header">
+            <div class="cv-card-title">
+              <i class="fas fa-file-pdf" style="color: var(--accent);"></i>
+              <span data-i18n="cv_resume_title">Resume / CV</span>
+            </div>
+            <div class="cv-card-actions">
+              <button class="cv-card-btn" onclick="togglePreview('resume-preview', this)">
+                <i class="fas fa-eye"></i> <span data-i18n="cv_preview">Preview</span>
+              </button>
+              <a href="assets/files/resume.pdf" download class="cv-card-btn primary">
+                <i class="fas fa-download"></i> <span data-i18n="cv_download">Download</span>
+              </a>
+            </div>
+          </div>
+          <div class="cv-card-body">
+            <p class="cv-card-desc" data-i18n="cv_resume_desc">My academic resume including education, research experience, and publications</p>
+            <div class="cv-card-meta">
+              <span class="cv-card-meta-item"><i class="fas fa-file"></i> PDF</span>
+              <span class="cv-card-meta-item"><i class="fas fa-weight-hanging"></i> ~200KB</span>
+              <span class="cv-card-meta-item"><i class="fas fa-clock"></i> <span data-i18n="cv_updated">Updated</span> 2025</span>
+              <span class="cv-view-count"><i class="fas fa-eye"></i> <span id="resume-views">0</span> <span data-i18n="cv_views">views</span></span>
+            </div>
+          </div>
+          <div class="cv-preview-placeholder" id="resume-placeholder">
+            <i class="fas fa-file-pdf"></i>
+            <span data-i18n="cv_no_preview">Click Preview to view the document</span>
+          </div>
+          <iframe id="resume-preview" class="cv-preview" src="" title="Resume Preview"></iframe>
+        </div>
+
+        <!-- Transcript Card -->
+        <div class="cv-card transcript-card">
+          <div class="cv-card-header">
+            <div class="cv-card-title">
+              <i class="fas fa-file-alt" style="color: var(--accent-teal);"></i>
+              <span data-i18n="cv_transcript_title">Academic Transcript</span>
+            </div>
+            <div class="cv-card-actions">
+              <button class="cv-card-btn" onclick="togglePreview('transcript-preview', this)">
+                <i class="fas fa-eye"></i> <span data-i18n="cv_preview">Preview</span>
+              </button>
+              <a href="assets/files/transcript.pdf" download class="cv-card-btn primary">
+                <i class="fas fa-download"></i> <span data-i18n="cv_download">Download</span>
+              </a>
+            </div>
+          </div>
+          <div class="cv-card-body">
+            <p class="cv-card-desc" data-i18n="cv_transcript_desc">Official academic transcript from Wuyi University</p>
+            <div class="cv-card-meta">
+              <span class="cv-card-meta-item"><i class="fas fa-file"></i> PDF</span>
+              <span class="cv-card-meta-item"><i class="fas fa-weight-hanging"></i> ~150KB</span>
+              <span class="cv-card-meta-item"><i class="fas fa-clock"></i> <span data-i18n="cv_updated">Updated</span> 2025</span>
+              <span class="cv-view-count"><i class="fas fa-eye"></i> <span id="transcript-views">0</span> <span data-i18n="cv_views">views</span></span>
+            </div>
+          </div>
+          <div class="cv-preview-placeholder" id="transcript-placeholder">
+            <i class="fas fa-file-alt"></i>
+            <span data-i18n="cv_no_preview">Click Preview to view the document</span>
+          </div>
+          <iframe id="transcript-preview" class="cv-preview" src="" title="Transcript Preview"></iframe>
+        </div>
+
+      </div>
+
+      <!-- Tip Box -->
+      <div class="cv-tip-box">
+        <i class="fas fa-lightbulb"></i>
+        <span data-i18n="cv_tip">Tip: Click Preview to view the document online, or click Download to save a copy. The preview uses Google Docs Viewer and may take a moment to load.</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Zefeng Chen. Built with &hearts; and &coffee;</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <span style="color:var(--border-color);">|</span>
+      <a href="https://github.com/Zephyr-Chan/zephyr-chan.github.io" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Source
+      </a>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+
+  <script>
+    // View counters
+    const viewCounts = {
+      'resume-preview': 0,
+      'transcript-preview': 0
+    };
+
+    function togglePreview(docId, btnEl) {
+      const preview = document.getElementById(docId);
+      const placeholder = document.getElementById(docId.replace('-preview', '-placeholder'));
+      const spanEl = btnEl.querySelector('span');
+      const iEl = btnEl.querySelector('i');
+      const viewsId = docId.replace('-preview', '-views');
+      const viewsEl = document.getElementById(viewsId);
+
+      if (preview.classList.contains('active')) {
+        // Hide preview
+        preview.classList.remove('active');
+        preview.src = '';
+        if (placeholder) placeholder.style.display = 'flex';
+        iEl.className = 'fas fa-eye';
+        spanEl.textContent = currentLang === 'zh' ? '预览' : 'Preview';
+      } else {
+        // Show preview with loading state
+        if (placeholder) placeholder.style.display = 'none';
+
+        // Show loading
+        preview.classList.add('active', 'loading');
+        preview.src = 'about:blank';
+
+        const pdfUrl = docId === 'resume-preview'
+          ? 'assets/files/resume.pdf'
+          : 'assets/files/transcript.pdf';
+
+        // Set actual src after a brief delay to show loading
+        setTimeout(() => {
+          preview.src = 'https://docs.google.com/gview?url=' + encodeURIComponent(window.location.origin + '/' + pdfUrl) + '&embedded=true';
+          preview.classList.remove('loading');
+        }, 500);
+
+        iEl.className = 'fas fa-eye-slash';
+        spanEl.textContent = currentLang === 'zh' ? '收起' : 'Hide';
+
+        // Increment view count
+        viewCounts[docId]++;
+        if (viewsEl) viewsEl.textContent = viewCounts[docId];
+      }
+    }
+  </script>
+
+</body>
+</html>
