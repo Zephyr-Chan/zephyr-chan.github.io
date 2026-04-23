@@ -27,6 +27,7 @@
 19. [常见问题 FAQ](#19-常见问题-faq)
 - [附录 A：友链添加详细教程](#附录-a友链添加详细教程)
 - [附录 B：代码上传模板（Git 命令）](#附录-b代码上传模板git-命令)
+- [附录 C：Decap CMS 动态内容管理](#附录-cdecap-cms-动态内容管理)
 
 ---
 
@@ -790,3 +791,69 @@ git push
 # Username: Zephyr-Chan
 # Password: ghp_你的token（注意 token 只显示一次，记得保存）
 ```
+
+---
+
+## 附录 C：Decap CMS 动态内容管理
+
+### C.1 什么是 Decap CMS
+
+Decap CMS 是一个基于 Git 的开源内容管理系统，让你可以通过网页界面（而非手动编辑 HTML）来管理网站上的动态内容，如算法模板、VP 记录、相册照片、学习资料和友链。
+
+完整的集成技术文档请参阅：**[docs/CMS-INTEGRATION.md](docs/CMS-INTEGRATION.md)**
+
+### C.2 快速开始
+
+**第一步**：确保已完成 GitHub OAuth 配置（详见 `docs/CMS-INTEGRATION.md` 第 8 节）
+
+**第二步**：访问 CMS 管理后台
+
+```
+https://你的用户名.github.io/admin/
+```
+
+**第三步**：使用 GitHub 账号登录
+
+**第四步**：在左侧边栏选择要管理的内容类型，点击 "New" 创建新内容
+
+### C.3 支持的内容类型
+
+| 内容类型 | 存储位置 | 说明 |
+|---------|---------|------|
+| 算法模板 | `content/algo-templates/` | 算法竞赛模板代码和解题思路 |
+| VP 记录 | `content/vp-notes/` | Virtual Participation 比赛笔记 |
+| 相册照片 | `content/gallery/` | 照片及其元数据 |
+| 学习资料 | `content/resources/` | 推荐的学习资源链接 |
+| 友链 | `content/friends/` | 友情链接管理 |
+
+### C.4 关键文件说明
+
+| 文件 | 说明 |
+|------|------|
+| `admin/index.html` | CMS 管理后台入口页面 |
+| `admin/config.yml` | CMS 配置文件（内容类型、字段定义等） |
+| `js/cms-loader.js` | 前端内容加载脚本（从 GitHub 读取并渲染内容） |
+| `assets/images/uploads/` | CMS 上传图片的存储目录 |
+
+### C.5 前端集成
+
+如果需要让页面自动加载 CMS 管理的内容，在 HTML 中引入加载脚本：
+
+```html
+<script src="js/cms-loader.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    // 加载算法模板
+    const templates = await CMSLoader.loadCollection('algo-templates');
+    // 加载相册照片
+    const photos = await CMSLoader.loadCollection('gallery');
+    // 加载友链
+    const friends = await CMSLoader.loadCollection('friends');
+    // ... 渲染到页面
+  });
+</script>
+```
+
+### C.6 更多信息
+
+详细的技术文档（架构设计、配置说明、OAuth 配置、故障排查、进阶功能等）请参阅 **[docs/CMS-INTEGRATION.md](docs/CMS-INTEGRATION.md)**。
