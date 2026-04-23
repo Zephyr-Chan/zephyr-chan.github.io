@@ -244,15 +244,13 @@ details > .details-content {
 
 /* --- Highlight Box --- */
 .highlight-box {
-  background: var(--bg-highlight);
+  background: linear-gradient(135deg, var(--bg-highlight), var(--bg-secondary));
+  border: 1px solid transparent;
   border-left: 3px solid var(--accent-amber);
   padding: 1rem 1.2rem;
   border-radius: 0 var(--card-radius) var(--card-radius) 0;
   margin: 1.2rem 0;
   font-size: var(--fs-small);
-  border: 1px solid transparent;
-  border-left: 3px solid var(--accent-amber);
-  background: linear-gradient(135deg, var(--bg-highlight), var(--bg-secondary));
 }
 
 .highlight-box.blue {
