@@ -261,8 +261,23 @@ function applyLanguage() {
     show_more: { en: 'Show More ▼', zh: '展开更多 ▼' },
     research_role1: { en: 'Research Assistant', zh: '科研助理' },
     research_role2: { en: 'Research Assistant', zh: '科研助理' },
-    research_desc1_1: { en: 'Developing a multimodal AI Agent for automated radiotherapy treatment planning based on Large Language Models, building an intelligent system with clinical decision-making capabilities', zh: '基于大语言模型开发多模态放疗自动计划AI Agent，构建具备临床决策能力的智能系统以优化放疗方案制定流程' },
-    research_desc2_1: { en: 'Exploring large model approaches for EEG signals to improve decoding accuracy and cross-subject transfer capability', zh: '探索脑电信号的大模型方法，致力于提升脑电数据的解码精度与跨被试迁移能力' },
+    research_org1: { en: '<a href="https://www.wyu.edu.cn">Wuyi University</a> · School of Electronic and Information Engineering', zh: '<a href="https://www.wyu.edu.cn">五邑大学</a> · 电子与信息工程学院' },
+    research_org2: { en: '<a href="https://www.wyu.edu.cn">Wuyi University</a> · School of Electronic and Information Engineering', zh: '<a href="https://www.wyu.edu.cn">五邑大学</a> · 电子与信息工程学院' },
+    edu_org: { en: '<a href="https://www.wyu.edu.cn">Wuyi University</a> · School of Electronic and Information Engineering', zh: '<a href="https://www.wyu.edu.cn">五邑大学</a> · 电子与信息工程学院' },
+    contact_location: { en: 'Wuyi University, School of Electronic and Information Engineering', zh: '五邑大学 电子与信息工程学院' },
+    research_desc1_1: { en: 'Developing a multimodal large model for automated radiotherapy treatment planning based on Large Language Models, building an intelligent system with clinical decision-making capabilities', zh: '基于大语言模型开发多模态放疗自动计划大模型，构建具备临床决策能力的智能系统以优化放疗方案制定流程' },
+    research_desc2_1: { en: 'Exploring topology-aware and knowledge-pretrained foundation models for Brain-Computer Interface to improve EEG decoding accuracy and cross-subject transfer capability', zh: '研究基于拓扑感知与知识预训练的脑机接口基础模型，提升脑电数据解码精度与跨被试迁移能力' },
+    project1_title: { en: 'Multimodal Large Model for Radiotherapy Auto-Planning', zh: '放疗自动计划多模态大模型' },
+    project1_badge: { en: 'Provincial Innovation Project', zh: '省级大创项目立项' },
+    project1_desc: { en: 'Developing a multimodal large model for automated radiotherapy treatment planning based on Large Language Models, building an intelligent system with clinical decision-making capabilities.', zh: '基于大语言模型开发多模态放疗自动计划大模型，构建具备临床决策能力的智能系统。' },
+    project2_title: { en: 'EEG Foundation Model (脑电基础模型)', zh: '基于拓扑感知与知识预训练的脑机接口模型' },
+    project2_badge: { en: 'National Innovation Project', zh: '国家级大创项目立项' },
+    project2_desc: { en: 'Exploring topology-aware and knowledge-pretrained foundation models for Brain-Computer Interface to improve EEG decoding accuracy and cross-subject transfer capability.', zh: '研究基于拓扑感知与知识预训练的脑机接口基础模型，提升脑电数据解码精度与跨被试迁移能力。' },
+    project3_title: { en: 'WYU Feiyue Handbook', zh: '邑大飞跃手册' },
+    project3_badge: { en: 'Building', zh: '构建中' },
+    project3_desc: { en: 'A comprehensive freshman guide for Wuyi University, covering campus life, academic planning, and course selection strategies.', zh: '五邑大学新生入学指南，涵盖校园生活、学业规划、选课攻略等实用信息。' },
+    project4_title: { en: 'AI Frontier Exploration', zh: 'AI 前沿探索' },
+    project4_desc: { en: 'Reproducing MedGPT, exploring Diffusion image generation and VLM multimodal understanding, tracking cutting-edge AI directions.', zh: '复现 MedGPT，探索 Diffusion 图像生成与 VLM 多模态理解，跟踪 AI 前沿方向。' },
     social_title: { en: 'Connect With Me', zh: '与我联系' },
     social_subtitle: { en: 'Find me across the web', zh: '在互联网上找到我' },
     social_github_desc: { en: 'Code repositories and open source projects', zh: '代码仓库与开源项目' },
@@ -346,7 +361,12 @@ function applyLanguage() {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (translations[key] && translations[key][currentLang]) {
-      el.textContent = translations[key][currentLang];
+      const val = translations[key][currentLang];
+      if (val.includes('<')) {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
     }
   });
 
