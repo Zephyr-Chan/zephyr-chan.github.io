@@ -4,14 +4,10 @@
    ============================================ */
 
 const galleryData = [
-  { src: 'assets/images/gallery/photo1.jpg', caption: 'CVPR 2026' },
-  { src: 'assets/images/gallery/photo2.jpg', caption: 'Lab Meeting' },
-  { src: 'assets/images/gallery/photo3.jpg', caption: 'Invited Talk' },
-  { src: 'assets/images/gallery/photo4.jpg', caption: 'Team Dinner' },
-  { src: 'assets/images/gallery/photo5.jpg', caption: 'Award Ceremony' },
-  { src: 'assets/images/gallery/photo6.jpg', caption: 'Workshop' },
-  { src: 'assets/images/gallery/photo7.jpg', caption: 'Academic Visit' },
-  { src: 'assets/images/gallery/photo8.jpg', caption: 'Project Demo' },
+  { src: 'assets/images/gallery/conference-photo.webp', caption: 'Conference' },
+  { src: 'assets/images/gallery/lab-meeting-2026.webp', caption: 'Lab Meeting' },
+  { src: 'assets/images/gallery/academic-visit.webp', caption: 'Academic Visit' },
+  { src: 'assets/images/gallery/project-demo.webp', caption: 'Project Demo' },
 ];
 
 let currentLightboxIndex = 0;

@@ -16,7 +16,6 @@ slug:
   sanitize_replacement: "_"
 
 collections:
-  # ===== 算法模板 =====
   - name: "algo_templates"
     label: "算法模板"
     label_singular: "算法模板"
@@ -24,53 +23,50 @@ collections:
     create: true
     delete: true
     slug: "{{slug}}"
-    summary: "{{title}} ({{category}})"
+    summary: "{{title}} — {{category}}"
     fields:
-      - { label: "标题", name: "title", widget: "string" }
-      - { label: "分类", name: "category", widget: "select", options: ["DP 动态规划", "图论", "字符串", "数学", "数据结构", "贪心", "搜索", "其他"], required: true }
-      - { label: "难度", name: "difficulty", widget: "select", options: ["入门", "中等", "困难", "省选", "NOI"], required: false }
-      - { label: "题目来源", name: "source", widget: "string", required: false }
-      - { label: "代码", name: "code", widget: "code", language: "cpp", required: false, default: "// 在此粘贴代码" }
-      - { label: "思路说明", name: "body", widget: "markdown", required: false }
-      - { label: "标签", name: "tags", widget: "list", allow_add: true, field: { label: "标签", name: "tag", widget: "string" }, required: false }
-      - { label: "发布日期", name: "date", widget: "datetime", format: "YYYY-MM-DD", default: "{{now}}" }
+      - { name: "title", label: "标题", widget: "string" }
+      - { name: "category", label: "分类", widget: "select", options: ["DP 动态规划", "图论", "字符串", "数学", "数据结构", "贪心", "搜索", "其他"] }
+      - { name: "difficulty", label: "难度", widget: "select", options: ["入门", "中等", "困难", "省选", "NOI"], required: false }
+      - { name: "source", label: "题目来源", widget: "string", required: false }
+      - { name: "code", label: "代码", widget: "code", default_language: "cpp", required: false }
+      - { name: "body", label: "思路说明", widget: "markdown", required: false }
+      - { name: "tags", label: "标签", widget: "list", required: false }
+      - { name: "date", label: "发布日期", widget: "datetime", required: false }
 
-  # ===== VP 记录 =====
   - name: "vp_notes"
-    label: "VP记录"
-    label_singular: "VP记录"
+    label: "VP 记录"
+    label_singular: "VP 记录"
     folder: "content/vp-notes"
     create: true
     delete: true
     slug: "{{slug}}"
     summary: "{{contest}} — {{date}}"
     fields:
-      - { label: "比赛名称", name: "contest", widget: "string", required: true }
-      - { label: "比赛平台", name: "platform", widget: "select", options: ["Codeforces", "AtCoder", "Luogu", "Nowcoder", "LeetCode", "GDCPC", "ICPC", "CCPC", "蓝桥杯", "其他"], required: true }
-      - { label: "比赛日期", name: "date", widget: "datetime", format: "YYYY-MM-DD", required: true }
-      - { label: "Rating 变化", name: "rating_change", widget: "string", required: false, hint: "例如: +45 或 -12" }
-      - { label: "排名", name: "rank", widget: "string", required: false }
-      - { label: "VP 内容", name: "body", widget: "markdown", required: true }
-      - { label: "标签", name: "tags", widget: "list", allow_add: true, field: { label: "标签", name: "tag", widget: "string" }, required: false }
+      - { name: "contest", label: "比赛名称", widget: "string" }
+      - { name: "platform", label: "比赛平台", widget: "select", options: ["Codeforces", "AtCoder", "Luogu", "Nowcoder", "LeetCode", "GDCPC", "ICPC", "CCPC", "蓝桥杯", "其他"] }
+      - { name: "date", label: "比赛日期", widget: "datetime" }
+      - { name: "rating_change", label: "Rating 变化", widget: "string", required: false }
+      - { name: "rank", label: "排名", widget: "string", required: false }
+      - { name: "body", label: "VP 内容", widget: "markdown" }
+      - { name: "tags", label: "标签", widget: "list", required: false }
 
-  # ===== 相册照片 =====
   - name: "gallery_photos"
     label: "相册照片"
-    label_singular: "照片"
+    label_singular: "相册照片"
     folder: "content/gallery"
     create: true
     delete: true
     slug: "{{slug}}"
-    summary: "{{title}}"
+    summary: "{{title}} — {{tag}}"
     fields:
-      - { label: "标题", name: "title", widget: "string", required: true }
-      - { label: "照片", name: "image", widget: "image", required: true, hint: "拖拽上传或点击选择" }
-      - { label: "描述", name: "description", widget: "string", required: false }
-      - { label: "分类", name: "tag", widget: "select", options: ["会议", "实验室", "旅行", "获奖", "日常", "竞赛", "其他"], required: true }
-      - { label: "拍摄日期", name: "date", widget: "datetime", format: "YYYY-MM-DD", required: false }
-      - { label: "排序权重", name: "weight", widget: "number", value_type: "int", min: 0, max: 100, default: 50, required: false, hint: "数字越大越靠前" }
+      - { name: "title", label: "照片标题", widget: "string" }
+      - { name: "image", label: "照片", widget: "image" }
+      - { name: "description", label: "照片描述", widget: "string", required: false }
+      - { name: "tag", label: "分类标签", widget: "select", options: ["会议", "实验室", "旅行", "获奖", "日常", "竞赛", "其他"] }
+      - { name: "date", label: "拍摄日期", widget: "datetime", required: false }
+      - { name: "weight", label: "排序权重 (0-100)", widget: "number", default: 50, required: false }
 
-  # ===== 学习资料 =====
   - name: "learning_resources"
     label: "学习资料"
     label_singular: "学习资料"
@@ -80,14 +76,13 @@ collections:
     slug: "{{slug}}"
     summary: "{{title}} — {{category}}"
     fields:
-      - { label: "名称", name: "title", widget: "string", required: true }
-      - { label: "链接", name: "url", widget: "string", required: true }
-      - { label: "描述", name: "description", widget: "string", required: false }
-      - { label: "分类", name: "category", widget: "select", options: ["深度学习", "论文阅读", "编程语言", "算法竞赛", "科研工具", "效率工具", "其他"], required: true }
-      - { label: "图标", name: "icon", widget: "select", options: ["fa-brain", "fa-book-open", "fa-laptop-code", "fa-code", "fa-flask", "fa-tools", "fa-graduation-cap", "fa-link"], required: false }
-      - { label: "颜色", name: "color", widget: "select", options: ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6", "#f39c12", "#1abc9c", "#e67e22", "#34495e"], required: false }
+      - { name: "title", label: "资料名称", widget: "string" }
+      - { name: "url", label: "资料链接", widget: "string" }
+      - { name: "description", label: "简短描述", widget: "string", required: false }
+      - { name: "category", label: "分类", widget: "select", options: ["深度学习", "论文阅读", "编程语言", "算法竞赛", "科研工具", "效率工具", "其他"] }
+      - { name: "icon", label: "图标 (FontAwesome 类名)", widget: "string", required: false }
+      - { name: "color", label: "卡片颜色 (十六进制)", widget: "string", required: false }
 
-  # ===== 友链 =====
   - name: "friend_links"
     label: "友链"
     label_singular: "友链"
@@ -97,8 +92,8 @@ collections:
     slug: "{{slug}}"
     summary: "{{name}}"
     fields:
-      - { label: "名称", name: "name", widget: "string", required: true }
-      - { label: "网站地址", name: "url", widget: "string", required: true }
-      - { label: "描述", name: "description", widget: "string", required: false }
-      - { label: "头像", name: "avatar", widget: "image", required: false, hint: "留空则显示首字母" }
-      - { label: "头像背景色", name: "avatar_color", widget: "select", options: ["linear-gradient(135deg, #667eea, #764ba2)", "linear-gradient(135deg, #0093E9, #80D0C7)", "linear-gradient(135deg, #f093fb, #f5576c)", "linear-gradient(135deg, #43e97b, #38f9d7)", "linear-gradient(135deg, #f7971e, #ffd200)"], required: false }
+      - { name: "name", label: "友链名称", widget: "string" }
+      - { name: "url", label: "网站地址", widget: "string" }
+      - { name: "description", label: "一句话描述", widget: "string", required: false }
+      - { name: "avatar", label: "头像", widget: "image", required: false }
+      - { name: "avatar_color", label: "头像背景渐变色", widget: "string", required: false }

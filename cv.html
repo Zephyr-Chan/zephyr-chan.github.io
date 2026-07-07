@@ -388,8 +388,8 @@
             <p class="cv-card-desc" data-i18n="cv_resume_desc">My academic resume including education, research experience, and publications</p>
             <div class="cv-card-meta">
               <span class="cv-card-meta-item"><i class="fas fa-file"></i> PDF</span>
-              <span class="cv-card-meta-item"><i class="fas fa-weight-hanging"></i> ~200KB</span>
-              <span class="cv-card-meta-item"><i class="fas fa-clock"></i> <span data-i18n="cv_updated">Updated</span> 2025</span>
+              <span class="cv-card-meta-item"><i class="fas fa-weight-hanging"></i> ~393KB</span>
+              <span class="cv-card-meta-item"><i class="fas fa-clock"></i> <span data-i18n="cv_updated">Updated</span> 2026.07</span>
               <span class="cv-view-count"><i class="fas fa-eye"></i> <span id="resume-views">0</span> <span data-i18n="cv_views">views</span></span>
             </div>
           </div>
@@ -437,7 +437,7 @@
       <!-- Tip Box -->
       <div class="cv-tip-box">
         <i class="fas fa-lightbulb"></i>
-        <span data-i18n="cv_tip">Tip: Click Preview to view the document online, or click Download to save a copy. The preview uses Google Docs Viewer and may take a moment to load.</span>
+        <span data-i18n="cv_tip">Tip: Click Preview to view the document online, or click Download to save a copy. View counts are tracked server-side (all visitors combined).</span>
       </div>
     </section>
 
@@ -458,15 +458,48 @@
   <!-- ========== SCRIPTS ========== -->
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/visitor-tracker.js"></script>
 
   <script>
-    // View counters
-    const viewCounts = {
-      'resume-preview': 0,
-      'transcript-preview': 0
-    };
+    // 服务端浏览统计（使用 CounterAPI，聚合所有用户的数据）
+    const COUNTER_NS = 'zephyr-chan.github.io';
+    const COUNTER_API = 'https://counterapi.com/api';
 
-    function togglePreview(docId, btnEl) {
+    async function fetchViewCount(key) {
+      try {
+        const resp = await fetch(`${COUNTER_API}/${COUNTER_NS}/view/${key}?readOnly=true`, { mode: 'cors' });
+        if (resp.ok) {
+          const data = await resp.json();
+          return data.value || 0;
+        }
+      } catch (e) {
+        console.log('Failed to fetch view count for', key);
+      }
+      return 0;
+    }
+
+    async function incrementView(key) {
+      try {
+        const resp = await fetch(`${COUNTER_API}/${COUNTER_NS}/view/${key}`, { mode: 'cors' });
+        if (resp.ok) {
+          const data = await resp.json();
+          return data.value || 0;
+        }
+      } catch (e) {
+        console.log('Failed to increment view for', key);
+      }
+      return 0;
+    }
+
+    // Initialize view counts on page load (server-side aggregate)
+    document.addEventListener('DOMContentLoaded', async function() {
+      const resumeViews = await fetchViewCount('resume-preview');
+      const transcriptViews = await fetchViewCount('transcript-preview');
+      document.getElementById('resume-views').textContent = resumeViews.toLocaleString();
+      document.getElementById('transcript-views').textContent = transcriptViews.toLocaleString();
+    });
+
+    async function togglePreview(docId, btnEl) {
       const preview = document.getElementById(docId);
       const placeholder = document.getElementById(docId.replace('-preview', '-placeholder'));
       const spanEl = btnEl.querySelector('span');
@@ -482,29 +515,23 @@
         iEl.className = 'fas fa-eye';
         spanEl.textContent = currentLang === 'zh' ? '预览' : 'Preview';
       } else {
-        // Show preview with loading state
+        // Show preview
         if (placeholder) placeholder.style.display = 'none';
-
-        // Show loading
-        preview.classList.add('active', 'loading');
-        preview.src = 'about:blank';
 
         const pdfUrl = docId === 'resume-preview'
           ? 'assets/files/resume.pdf'
           : 'assets/files/transcript.pdf';
 
-        // Set actual src after a brief delay to show loading
-        setTimeout(() => {
-          preview.src = 'https://docs.google.com/gview?url=' + encodeURIComponent(window.location.origin + '/' + pdfUrl) + '&embedded=true';
-          preview.classList.remove('loading');
-        }, 500);
+        // Use native PDF viewer
+        preview.classList.add('active');
+        preview.src = pdfUrl;
 
         iEl.className = 'fas fa-eye-slash';
         spanEl.textContent = currentLang === 'zh' ? '收起' : 'Hide';
 
-        // Increment view count
-        viewCounts[docId]++;
-        if (viewsEl) viewsEl.textContent = viewCounts[docId];
+        // Increment server-side view count and update display
+        const newCount = await incrementView(docId);
+        if (viewsEl) viewsEl.textContent = newCount.toLocaleString();
       }
     }
   </script>

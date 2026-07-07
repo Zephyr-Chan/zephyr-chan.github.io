@@ -702,21 +702,21 @@ Google Docs Viewer 需要文件在公网可访问。本地预览时无法使用�
 
 ---
 
-## 附录 B：代码上传模板（Git 命令）
+## 附录 B：Git 上传完整指南
 
 ### B.1 首次部署
 
 ```bash
 # 1. 在 GitHub 上创建仓库 zephyr-chan.github.io（Public）
 
-# 2. 在本地打开终端，进入网站文件夹
-cd /path/to/academic-homepage
+# 2. 在本地打开终端（PowerShell），进入网站文件夹
+cd C:\Users\泽峰\Desktop\homepage\zephyr-chan.github.io
 
 # 3. 初始化 Git
 git init
 git branch -M main
 
-# 4. 关联远程仓库（替换为你的 GitHub 用户名）
+# 4. 关联远程仓库（⚠️ 注意：不要加反引号！）
 git remote add origin https://github.com/Zephyr-Chan/zephyr-chan.github.io.git
 
 # 5. 添加所有文件
@@ -732,18 +732,23 @@ git push -u origin main
 ### B.2 日常更新（修改了文件后）
 
 ```bash
-# 1. 查看修改了哪些文件
+# 1. 先拉取远程最新版本（避免冲突！）
+git pull
+
+# 2. 查看修改了哪些文件
 git status
 
-# 2. 添加所有修改
+# 3. 添加所有修改
 git add .
 
-# 3. 提交（写清楚改了什么）
-git commit -m "更新：添加新论文 / 修改个人信息 / 添加友链"
+# 4. 提交（写清楚改了什么）
+git commit -m "update: 添加新论文"
 
-# 4. 推送
+# 5. 推送
 git push
 ```
+
+> 💡 **好习惯**：每次修改前先 `git pull`，修改完后先 `git add .` 再 `git commit` 再 `git push`，养成 **pull → 改 → add → commit → push** 的节奏。
 
 ### B.3 常用 Git 命令速查
 
@@ -756,17 +761,23 @@ git push
 | `git commit -m "说明"` | 提交修改 |
 | `git push` | 推送到 GitHub |
 | `git pull` | 从 GitHub 拉取最新版本 |
+| `git pull --rebase` | 拉取并把你的修改放在最上面（推荐） |
 | `git log --oneline -5` | 查看最近 5 次提交记录 |
-| `git restore 文件名` | 撤销对某个文件的修改（未提交时） |
+| `git restore 文件名` | 撤销对某个文件的修改（未 add 时） |
+| `git remote -v` | 查看远程仓库地址 |
+| `git stash` | 暂存当前修改（不提交） |
+| `git stash pop` | 恢复暂存的修改 |
+| `git merge --abort` | 放弃合并（解决冲突时用） |
 
-### B.4 提交信息规范建议
+### B.4 提交信息规范
 
 ```
-feat: 添加新功能（如新页面、新模块）
-fix: 修复问题（如链接错误、样式问题）
-update: 更新内容（如修改个人信息、添加论文）
-docs: 更新文档（如修改 GUIDE.md）
-style: 调整样式（不影响功能）
+feat:     添加新功能（如新页面、新模块）
+fix:      修复问题（如链接错误、样式问题）
+update:   更新内容（如修改个人信息、添加论文）
+docs:     更新文档（如修改 GUIDE.md）
+style:    调整样式（不影响功能）
+refactor: 重构代码（不改变功能）
 ```
 
 示例：
@@ -774,22 +785,241 @@ style: 调整样式（不影响功能）
 git commit -m "feat: 添加算法学习页面"
 git commit -m "update: 添加新论文和更新科研经历"
 git commit -m "fix: 修复导航栏在移动端的显示问题"
+git commit -m "docs: 更新 Git 上传指南"
 ```
 
-### B.5 如果推送到 GitHub 失败
+---
 
+### B.5 常见错误与解决方案
+
+#### ❌ 错误 1：`Updates were rejected because the remote contains work`
+
+```
+! [rejected]        main -> main (fetch first)
+error: failed to push some refs
+hint: Updates were rejected because the remote contains work that you do not have locally.
+```
+
+**原因**：远程仓库有你本地没有的提交（可能是别人推的，或者你在 GitHub 网页上改过文件）。
+
+**解决**：
 ```bash
-# 如果提示远程有更新，先拉取再推送
+# 方法 A：先拉取再推送（推荐）
 git pull --rebase origin main
 git push
 
-# 如果提示认证失败，使用 Personal Access Token
-# 1. 去 GitHub → Settings → Developer settings → Personal access tokens → Generate new token
-# 2. 勾选 repo 权限
-# 3. 推送时用 token 作为密码：
+# 方法 B：如果你确定本地版本是最新的，强制推送
+git push --force-with-lease
+```
+
+> ⚠️ `--force-with-lease` 比 `--force` 安全，如果远程有别人新推的内容会拒绝覆盖。**只有在你确定要覆盖远程时才用。**
+
+---
+
+#### ❌ 错误 2：`Could not resolve host: github.com`
+
+```
+fatal: unable to access 'https://github.com/...': Could not resolve host: github.com
+```
+
+**原因 A：远程 URL 被反引号包裹了**（PowerShell 复制粘贴时容易带入反引号 `` ` ``）
+
+检查：
+```bash
+git remote -v
+```
+
+如果看到 URL 两边有反引号：
+```
+origin  `https://github.com/Zephyr-Chan/zephyr-chan.github.io.git`  ← 错误！
+```
+
+修复：
+```bash
+git remote set-url origin https://github.com/Zephyr-Chan/zephyr-chan.github.io.git
+```
+
+> 💡 **注意**：在 PowerShell 中输入 URL 时，**不要加任何反引号或引号**，直接输入纯 URL。
+
+**原因 B：网络问题**（国内访问 GitHub 不稳定）
+
+```bash
+# 方法 A：配置代理（如果你有代理软件，如 Clash/V2Ray）
+git config --global http.proxy http://127.0.0.1:7890
+git config --global https.proxy http://127.0.0.1:7890
+git push
+
+# 方法 B：取消代理（如果不需要了）
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+# 方法 C：换用 SSH 协议（需要先配置 SSH Key，见 B.6）
+git remote set-url origin git@github.com:Zephyr-Chan/zephyr-chan.github.io.git
+git push
+
+# 方法 D：多试几次（有时候就是网络波动）
+git push
+```
+
+---
+
+#### ❌ 错误 3：`Connection was reset`
+
+```
+fatal: unable to access 'https://github.com/...': Recv failure: Connection was reset
+```
+
+**原因**：网络连接被重置，通常是网络不稳定或代理问题。
+
+**解决**：
+```bash
+# 1. 先检查远程 URL 是否正确（没有反引号）
+git remote -v
+
+# 2. 如果 URL 正确，就是网络问题，尝试：
+#    - 开/关代理再试
+#    - 换个网络（手机热点试试）
+#    - 多试几次
+git push
+```
+
+---
+
+#### ❌ 错误 4：`Automatic merge failed; fix conflicts`
+
+```
+CONFLICT (content): Merge conflict in index.html
+CONFLICT (content): Merge conflict in js/main.js
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+**原因**：`git pull` 时本地和远程修改了同一个文件的同一个位置，Git 无法自动合并。
+
+**解决**：
+
+```bash
+# 方法 A：用本地版本覆盖远程（推荐，如果你确定本地是最新的）
+git merge --abort                    # 先放弃合并
+git push --force-with-lease          # 强制推送本地版本
+
+# 方法 B：如果 merge --abort 报错 "not uptodate"
+git checkout -- css/animations.css   # 先处理未提交的文件
+git merge --abort
+git push --force-with-lease
+
+# 方法 C：手动选择保留哪个版本
+git checkout --ours index.html       # 保留本地版本
+git checkout --theirs index.html     # 保留远程版本（二选一）
+git add index.html
+git commit -m "fix: resolve merge conflict"
+git push
+```
+
+> 💡 **预防冲突**：每次修改前先 `git pull`，改完立刻 `git push`，不要积累太多本地修改。
+
+---
+
+#### ❌ 错误 5：`Entry 'xxx' not uptodate. Cannot merge.`
+
+```
+error: Entry 'css/animations.css' not uptodate. Cannot merge.
+fatal: Could not reset index file to revision 'HEAD'.
+```
+
+**原因**：有文件被修改了但还没有 `git add`，导致 Git 无法执行 merge 操作。
+
+**解决**：
+```bash
+# 方法 A：先提交或还原未保存的修改
+git add css/animations.css
+git merge --abort
+
+# 方法 B：直接还原
+git checkout -- css/animations.css
+git merge --abort
+
+# 方法 C：如果以上都不行，强制重置
+git reset --hard HEAD
+```
+
+---
+
+#### ❌ 错误 6：`Authentication failed` / 认证失败
+
+```
+fatal: Authentication failed for 'https://github.com/'
+```
+
+**原因**：GitHub 已不支持密码认证，需要使用 Personal Access Token (PAT)。
+
+**解决**：
+```bash
+# 1. 生成 Token：
+#    GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
+#    → Generate new token → 勾选 repo 权限 → 生成
+
+# 2. 推送时输入 Token 作为密码：
 git push
 # Username: Zephyr-Chan
-# Password: ghp_你的token（注意 token 只显示一次，记得保存）
+# Password: ghp_你的token（粘贴进去，终端不会显示字符，这是正常的）
+
+# 3. 让 Git 记住凭据（下次不用再输入）
+git config --global credential.helper store
+```
+
+---
+
+### B.6 配置 SSH Key（推荐，一劳永逸）
+
+配置 SSH 后就不用每次输入 Token 了：
+
+```bash
+# 1. 生成 SSH Key（一路回车即可）
+ssh-keygen -t ed25519 -C "820043928@qq.com"
+
+# 2. 查看公钥
+cat ~/.ssh/id_ed25519.pub
+
+# 3. 复制公钥内容，添加到 GitHub：
+#    GitHub → Settings → SSH and GPG keys → New SSH key → 粘贴公钥
+
+# 4. 测试连接
+ssh -T git@github.com
+# 输出 Hi Zephyr-Chan! You've successfully authenticated 表示成功
+
+# 5. 切换仓库为 SSH 协议
+git remote set-url origin git@github.com:Zephyr-Chan/zephyr-chan.github.io.git
+
+# 6. 以后直接 push，不需要输入密码
+git push
+```
+
+---
+
+### B.7 完整工作流程图
+
+```
+修改文件前          修改文件后
+    │                  │
+    ▼                  ▼
+ git pull          git status
+    │                  │
+    │                  ▼
+    │             git add .
+    │                  │
+    │                  ▼
+    │             git commit -m "说明"
+    │                  │
+    │                  ▼
+    │               git push
+    │                  │
+    │            ┌─────┴─────┐
+    │            │ 成功？    │
+    │            ├── 是 → 完成 ✅
+    │            └── 否 ↓
+    │         查看 B.5 错误表
+    │                  │
+    └──────────────────┘
 ```
 
 ---

@@ -1,0 +1,50 @@
+# Jekyll configuration for GitHub Pages
+theme: jekyll-theme-minimal
+title: Zefeng Chen
+description: Personal academic homepage
+encoding: utf-8
+
+# Sass compiler
+sass:
+  style: compressed
+
+# Collections for CMS content
+collections:
+  algo-templates:
+    output: true
+    permalink: /algo-templates/:path/
+  vp-notes:
+    output: true
+    permalink: /vp-notes/:path/
+  gallery:
+    output: false
+  resources:
+    output: false
+  friends:
+    output: false
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "default"
+  - scope:
+      path: "content/algo-templates"
+    values:
+      collection: algo-templates
+
+# Exclude from processing
+exclude:
+  - README.md
+  - GUIDE.md
+  - academic-homepage-plan2.0.md
+  - docs/
+  - .idea/
+  - .trae/
+  - admin/
+
+# Plugins (GitHub Pages supported)
+plugins:
+  - jekyll-seo-tag
