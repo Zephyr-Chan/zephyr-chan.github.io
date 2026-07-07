@@ -1,40 +1,40 @@
 /* ============================================
-   Theme Variables v3 — "Academic Study" Style
-   学术底色 + 独特创意元素
+   Theme Variables v4 — "Gallery Atelier" Style
+   当代艺术画册风 · 暖画廊底色 + 衬线字体
    ============================================ */
 
 :root {
-  /* === 背景与纹理 === */
+  /* === 背景与纹理 — 暖画廊底色 === */
   --bg-primary: #fafafa;
   --bg-secondary: #ffffff;
   --bg-card: #ffffff;
   --bg-highlight: #fff8e1;
-  --bg-highlight-alt: #e3f2fd;
+  --bg-highlight-alt: #f0ebe4;
   --bg-tag: #f0f0f0;
   --bg-code: #f5f5f5;
-  --bg-nav: rgba(255, 255, 255, 0.85);
+  --bg-nav: rgba(250, 250, 250, 0.88);
 
-  /* === 文字 === */
+  /* === 文字 — 暖灰偏移 === */
   --text-primary: #1a1a1a;
   --text-secondary: #555555;
   --text-tertiary: #999999;
   --text-inverse: #ffffff;
 
-  /* === 强调色 — 深蓝学术风 === */
-  --accent: #1a56db;
-  --accent-hover: #1442b0;
-  --accent-light: rgba(26, 86, 219, 0.06);
-  --accent-glow: rgba(26, 86, 219, 0.15);
+  /* === 强调色 — 墨蓝(沉稳、画廊感) === */
+  --accent: #2d4a6b;
+  --accent-hover: #1e3450;
+  --accent-light: rgba(45, 74, 107, 0.07);
+  --accent-glow: rgba(45, 74, 107, 0.12);
 
-  /* === 辅助强调色 === */
-  --accent-teal: #0d9488;
-  --accent-amber: #d97706;
-  --accent-rose: #e11d48;
+  /* === 辅助强调色 — 克制暖调 === */
+  --accent-teal: #5a7a6e;
+  --accent-amber: #b8722c;
+  --accent-rose: #b04545;
 
-  /* === 边框 === */
+  /* === 边框 — 暖灰 === */
   --border-color: #e5e5e5;
   --border-light: rgba(0, 0, 0, 0.06);
-  --border-input: #d4d4d4;
+  --border-input: #d8d2c8;
 
   /* === 阴影 === */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -43,26 +43,26 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
 
-  /* === 字体 — 现代学术风 === */
-  --font-heading: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: 'Lora', 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  /* === 字体 — 画册衬线风 === */
+  --font-heading: 'Fraunces', 'Noto Serif SC', Georgia, serif;
+  --font-body: 'Crimson Pro', 'Noto Serif SC', Georgia, serif;
+  --font-serif: 'Fraunces', 'Noto Serif SC', Georgia, serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
 
   /* === 字号 === */
-  --fs-hero-name: 2.8rem;
-  --fs-section: 1.35rem;
-  --fs-body: 0.95rem;
-  --fs-small: 0.85rem;
+  --fs-hero-name: 3.2rem;
+  --fs-section: 1.5rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
   --fs-meta: 0.78rem;
   --fs-tag: 0.72rem;
 
   /* === 间距 === */
-  --max-width: 860px;
+  --max-width: 880px;
   --container-padding: 32px;
-  --section-gap: 3.5rem;
-  --card-radius: 10px;
-  --btn-radius: 6px;
+  --section-gap: 4rem;
+  --card-radius: 6px;
+  --btn-radius: 4px;
 
   /* === 过渡 === */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -79,38 +79,38 @@
 
 /* === 暗色模式 === */
 [data-theme="dark"] {
-  --bg-primary: #0f1117;
-  --bg-secondary: #1a1b26;
-  --bg-card: #1e1f2e;
-  --bg-highlight: #2a2520;
-  --bg-highlight-alt: #172030;
-  --bg-tag: #252636;
-  --bg-code: #1e1f2e;
-  --bg-nav: rgba(15, 17, 23, 0.85);
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #252525;
+  --bg-card: #2a2a2a;
+  --bg-highlight: #3a3530;
+  --bg-highlight-alt: #2d2823;
+  --bg-tag: #333333;
+  --bg-code: #222222;
+  --bg-nav: rgba(26, 26, 26, 0.88);
 
-  --text-primary: #e4e4e7;
-  --text-secondary: #a1a1aa;
-  --text-tertiary: #71717a;
-  --text-inverse: #0f1117;
+  --text-primary: #f0f0f0;
+  --text-secondary: #b0b0b0;
+  --text-tertiary: #808080;
+  --text-inverse: #1a1a1a;
 
-  --accent: #6d9fff;
-  --accent-hover: #8bb4ff;
-  --accent-light: rgba(109, 159, 255, 0.08);
-  --accent-glow: rgba(109, 159, 255, 0.1);
+  --accent: #6b9fd8;
+  --accent-hover: #8bb5e8;
+  --accent-light: rgba(107, 159, 216, 0.1);
+  --accent-glow: rgba(107, 159, 216, 0.12);
 
-  --accent-teal: #2dd4bf;
-  --accent-amber: #fbbf24;
-  --accent-rose: #fb7185;
+  --accent-teal: #4ec0b4;
+  --accent-amber: #e8a040;
+  --accent-rose: #e85070;
 
-  --border-color: #2e2f3e;
-  --border-light: rgba(255, 255, 255, 0.05);
-  --border-input: #3a3b4a;
+  --border-color: #3a3a3a;
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-input: #4a4a4a;
 
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.5);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
 
-  --cursor-glow: radial-gradient(600px circle, rgba(109, 159, 255, 0.06), transparent 40%);
+  --cursor-glow: radial-gradient(600px circle, rgba(107, 159, 216, 0.08), transparent 40%);
 }

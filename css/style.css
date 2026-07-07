@@ -55,8 +55,11 @@
 }
 
 .hero-name {
+  font-family: var(--font-heading);
   margin-bottom: 0.6rem;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  font-optical-sizing: auto;
 }
 
 /* --- Tagline with typing effect --- */
@@ -85,17 +88,19 @@
 .hero-social { margin-top: 0.5rem; }
 
 .hero-quote {
-  margin-top: 2rem;
-  padding: 1rem 1.5rem;
+  margin-top: 2.2rem;
+  padding: 1.2rem 1.8rem;
   font-family: var(--font-serif);
   font-style: italic;
   font-size: var(--fs-small);
   color: var(--text-tertiary);
   text-align: center;
-  max-width: 500px;
+  max-width: 520px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.8;
+  line-height: 1.85;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .quote-mark {
@@ -116,6 +121,7 @@
 
 /* --- About Section --- */
 .about-text {
+  font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: 1.85;
   color: var(--text-secondary);
@@ -139,15 +145,17 @@
 
 /* --- Publication Section --- */
 .pub-title {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.2rem;
   line-height: 1.4;
   letter-spacing: -0.01em;
+  font-optical-sizing: auto;
 }
 
+.pub-meta { color: var(--text-tertiary); }
 .pub-title a { color: var(--text-primary); }
 .pub-title a:hover { color: var(--accent); }
 

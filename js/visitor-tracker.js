@@ -282,6 +282,17 @@ const VisitorTracker = {
         </div>
       </div>
     `;
+  },
+
+  /**
+   * 渲染访客地图区域的简短文字统计
+   * @param {string} numberId - 数字元素ID
+   */
+  async renderMapText(numberId) {
+    const el = document.getElementById(numberId);
+    if (!el) return;
+    const views = await this.getTotalViews();
+    el.textContent = views > 0 ? views.toLocaleString() : '—';
   }
 };
 

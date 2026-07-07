@@ -2,18 +2,18 @@
    Animations v3 — 优雅动效
    ============================================ */
 
-/* --- Hero Entrance --- */
+/* --- Hero Entrance(衬线优化:更慢更优雅) --- */
 .hero-animate {
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(24px);
+  animation: fadeSlideIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero-animate:nth-child(1) { animation-delay: 0.05s; }
-.hero-animate:nth-child(2) { animation-delay: 0.15s; }
-.hero-animate:nth-child(3) { animation-delay: 0.3s; }
-.hero-animate:nth-child(4) { animation-delay: 0.45s; }
-.hero-animate:nth-child(5) { animation-delay: 0.6s; }
+.hero-animate:nth-child(1) { animation-delay: 0.08s; }
+.hero-animate:nth-child(2) { animation-delay: 0.22s; }
+.hero-animate:nth-child(3) { animation-delay: 0.38s; }
+.hero-animate:nth-child(4) { animation-delay: 0.54s; }
+.hero-animate:nth-child(5) { animation-delay: 0.7s; }
 
 @keyframes fadeSlideIn {
   to {
@@ -37,13 +37,13 @@
   50% { opacity: 0; }
 }
 
-/* --- Scroll Reveal --- */
+/* --- Scroll Reveal — 更从容 --- */
 .reveal {
   opacity: 0;
-  transform: translateY(25px);
+  transform: translateY(28px);
   transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.visible {
@@ -92,14 +92,14 @@
   50% { opacity: 0.4; transform: scale(0.7); }
 }
 
-/* --- Floating particles (decorative) --- */
+/* --- Floating particles(墨点质感) --- */
 .particle {
   position: fixed;
-  width: 3px;
-  height: 3px;
+  width: 2px;
+  height: 2px;
   border-radius: 50%;
-  background: var(--accent);
-  opacity: 0.15;
+  background: var(--text-primary);
+  opacity: 0.06;
   pointer-events: none;
   z-index: 0;
   animation: float linear infinite;
@@ -107,8 +107,8 @@
 
 @keyframes float {
   0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.15; }
-  90% { opacity: 0.15; }
+  10% { opacity: 0.06; }
+  90% { opacity: 0.06; }
   100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
 }
 

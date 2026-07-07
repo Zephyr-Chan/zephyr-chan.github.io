@@ -138,21 +138,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// --- Floating Particles ---
+// --- Floating Particles (墨点质感) ---
 function createParticles() {
-  const colors = ['var(--accent)', 'var(--accent-teal)', 'var(--accent-amber)'];
-  const count = 8;
+  const count = 6;
 
   for (let i = 0; i < count; i++) {
     const particle = document.createElement('div');
     particle.className = 'particle';
     particle.style.left = Math.random() * 100 + 'vw';
-    particle.style.width = (Math.random() * 3 + 1) + 'px';
-    particle.style.height = particle.style.width;
-    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-    particle.style.animationDuration = (Math.random() * 20 + 15) + 's';
-    particle.style.animationDelay = (Math.random() * 15) + 's';
-    particle.style.opacity = (Math.random() * 0.1 + 0.05).toString();
+    const size = Math.random() * 2 + 1;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    particle.style.background = 'var(--text-primary)';
+    particle.style.animationDuration = (Math.random() * 25 + 20) + 's';
+    particle.style.animationDelay = (Math.random() * 20) + 's';
+    particle.style.opacity = (Math.random() * 0.05 + 0.03).toString();
     document.body.appendChild(particle);
   }
 }
@@ -264,6 +264,7 @@ function applyLanguage() {
     research_org1: { en: '<a href="https://www.wyu.edu.cn">Wuyi University</a> · School of Electronic and Information Engineering', zh: '<a href="https://www.wyu.edu.cn">五邑大学</a> · 电子与信息工程学院' },
     research_org2: { en: '<a href="https://www.wyu.edu.cn">Wuyi University</a> · School of Electronic and Information Engineering', zh: '<a href="https://www.wyu.edu.cn">五邑大学</a> · 电子与信息工程学院' },
     edu_org: { en: '<a href="https://www.wyu.edu.cn">Wuyi University</a> · School of Electronic and Information Engineering', zh: '<a href="https://www.wyu.edu.cn">五邑大学</a> · 电子与信息工程学院' },
+    edu_gpa: { en: 'GPA 4.00/5.00 | Avg Score 88/100 | Major Rank 1/39', zh: 'GPA 4.00/5.00 | 均分 88/100 | 专业排名 1/39' },
     contact_location: { en: 'Wuyi University, School of Electronic and Information Engineering', zh: '五邑大学 电子与信息工程学院' },
     research_desc1_1: { en: 'Developing a multimodal data-driven automatic treatment planning Agent for radiotherapy, integrating multi-source clinical data (CT, dose, contours, protocols) to automate plan generation with clinical decision-support capabilities.', zh: '开发多模态数据驱动的放疗自动计划设计Agent，整合CT影像、剂量分布、OAR勾画及临床方案等多源数据，实现放疗计划的自动生成与临床决策支持' },
     research_desc2_1: { en: 'Developing a topology-aware and mask-pretrained EEG foundation model to improve decoding accuracy and cross-subject generalization in brain-computer interface systems.', zh: '开发基于拓扑感知与掩码预训练的脑电基础模型，提升脑电解码精度与跨被试泛化能力' },

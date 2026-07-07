@@ -4,10 +4,10 @@
    ============================================ */
 
 const galleryData = [
-  { src: 'assets/images/gallery/conference-photo.webp', caption: 'Conference' },
-  { src: 'assets/images/gallery/lab-meeting-2026.webp', caption: 'Lab Meeting' },
-  { src: 'assets/images/gallery/academic-visit.webp', caption: 'Academic Visit' },
-  { src: 'assets/images/gallery/project-demo.webp', caption: 'Project Demo' },
+  { src: 'assets/images/gallery/conference-photo.webp', caption: 'Conference', year: '2026' },
+  { src: 'assets/images/gallery/lab-meeting-2026.webp', caption: 'Lab Meeting', year: '2026' },
+  { src: 'assets/images/gallery/academic-visit.webp', caption: 'Academic Visit', year: '2025' },
+  { src: 'assets/images/gallery/project-demo.webp', caption: 'Project Demo', year: '2025' },
 ];
 
 let currentLightboxIndex = 0;
@@ -76,4 +76,16 @@ document.addEventListener('DOMContentLoaded', () => {
         break;
     }
   });
+
+  // --- 跑马灯:视口外暂停动画节省性能 ---
+  const marqueeTrack = document.getElementById('gallery-marquee-track');
+  const marqueeSection = document.getElementById('gallery-marquee');
+  if (marqueeTrack && marqueeSection && 'IntersectionObserver' in window) {
+    const marqueeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        marqueeTrack.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+      });
+    }, { threshold: 0 });
+    marqueeObserver.observe(marqueeSection);
+  }
 });
